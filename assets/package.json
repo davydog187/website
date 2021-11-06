@@ -1,0 +1,33 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "Dave's personal website",
+  "main": "src/index.js",
+  "scripts": {
+    "watch": "",
+    "esbuild.watch": "esbuild "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davydog187/website.git"
+  },
+  "keywords": [
+    "dave",
+    "elixir",
+    "website"
+  ],
+  "author": "Dave Lucia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davydog187/website/issues"
+  },
+  "homepage": "https://github.com/davydog187/website#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "esbuild": "^0.13.12",
+    "postcss": "^8.3.11",
+    "postcss-cli": "^9.0.2",
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^2.2.19"
+  }
+}

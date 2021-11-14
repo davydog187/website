@@ -17,36 +17,9 @@
 
   <section class="lg:col-span-3 p-2">
     <ul class="flex flex-col gap-4 text-3xl">
-      <li>
-        Surface: A Bridge to the JavaScript community
-      </li>
-      <li>
-        Migrating from Kafka to RabbitMQ at SimpleBet: Why and How
-      </li>
-      <li>
-        Betting on Observability at Simplebet
-      </li>
-      <li>
-        Panel on Machine Learning on the BEAM
-      </li>
-      <li>
-        Rustling up predictive sports betting models on the BEAM
-      </li>
-      <li>
-        Battleship Elixir: JSON sunk my float
-      </li>
-      <li>
-        Two Years of Elixir at The Outline
-      </li>
-      <li>
-        Refactoring Elixir for maintainability
-      </li>
-      <li>
-        Beyond Functions in Elixir: Refactoring for maintainability
-      </li>
-
-
-
+      <%= for content <- @content do %>
+          <li><%= content %></li>
+      <% end %>
     </ul>
   </section>
 </div>

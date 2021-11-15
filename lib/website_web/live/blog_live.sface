@@ -1,0 +1,36 @@
+<div class="grid md:grid-cols-3 lg:grid-cols-4">
+  <section class="flex flex-col items-center gap-2 pt-4">
+    <div class="h-64 w-64">
+      <img class="rounded-full border-blue-100" src="/images/coffee_w_pearl.png">
+    </div>
+
+    <div class="">
+      <h1 class="text-2xl pb-4 squiggle">Hi 👋 I'm <span class="font-medium">Dave Lucia</span></h1>
+      <ul class="pt-2 flex flex-col gap-2 text-md">
+        <li>I work at <span class="font-medium">Simplebet</span></li>
+        <li>I live in <span class="font-medium">New York</span></li>
+        <li class="inline-flex gap-2"><SVG.twitter /> @davydog187</li>
+        <li class="inline-flex gap-2"><SVG.github /> @davydog187</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="lg:col-span-3 p-2">
+    <ul class="flex flex-col text-3xl">
+      {#for content <- @content}
+        <li class="flex flex-row py-6 items-center gap-2 border-b border-blue-200 hover:animate-pulse hover:bg-yellow-50">
+          {#case content.type}
+            {#match :talk}
+              <SVG.speakerphone class="text-blue-600" />
+            {#match :blog}
+              <SVG.newspaper class="text-yellow-600" />
+            {#match :podcast}
+              <SVG.microphone class="text-pink-600" />
+          {/case}
+
+          <Link label={content.title} to={content.link} />
+        </li>
+      {/for}
+    </ul>
+  </section>
+</div>

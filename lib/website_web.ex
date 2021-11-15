@@ -38,12 +38,13 @@ defmodule WebsiteWeb do
 
       # Include shared imports and aliases for views
       unquote(view_helpers())
+      import Surface
     end
   end
 
   def live_view do
     quote do
-      use Phoenix.LiveView,
+      use Surface.LiveView,
         layout: {WebsiteWeb.LayoutView, "live.html"}
 
       unquote(view_helpers())
@@ -52,7 +53,15 @@ defmodule WebsiteWeb do
 
   def live_component do
     quote do
-      use Phoenix.LiveComponent
+      use Surface.LiveComponent
+
+      unquote(view_helpers())
+    end
+  end
+
+  def component do
+    quote do
+      use Surface.Component
 
       unquote(view_helpers())
     end

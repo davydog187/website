@@ -53,10 +53,11 @@ config :website, WebsiteWeb.Endpoint,
 
 # Watch static and templates for browser reloading.
 config :website, WebsiteWeb.Endpoint,
+  reloadable_compilers: [:gettext, :elixir, :surface],
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"lib/website_web/(live|views)/.*(ex)$",
+      ~r"lib/website_web/(live|views|components)/.*(ex|sface|js)$",
       ~r"lib/website_web/templates/.*(eex)$"
     ]
   ]

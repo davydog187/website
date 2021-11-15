@@ -7,7 +7,7 @@ defmodule Website.MixProject do
       version: "0.1.0",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: Mix.compilers(),
+      compilers: Mix.compilers() ++ [:surface],
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -41,8 +41,10 @@ defmodule Website.MixProject do
       {:phoenix_live_view, "~> 0.16.0"},
       {:plug_cowboy, "~> 2.5"},
       {:jason, "~> 1.2"},
+      {:surface, "~> 0.6.0"},
       {:telemetry_metrics, "~> 0.6"},
-      {:telemetry_poller, "~> 1.0"}
+      {:telemetry_poller, "~> 1.0"},
+      {:surface_formatter, "~> 0.6.0"}
     ]
   end
 

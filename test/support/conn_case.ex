@@ -19,6 +19,7 @@ defmodule WebsiteWeb.ConnCase do
 
   using do
     quote do
+      use Surface.LiveViewTest
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest

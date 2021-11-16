@@ -59,8 +59,8 @@ defmodule Website.MixProject do
       setup: ["deps.get"],
       "assets.deploy": [
         "cmd --cd assets npm run deploy",
-        "esbuild default --minify",
-        "phx.digest"
+        "esbuild default --minify"
+        # "phx.digest"
       ]
     ]
   end

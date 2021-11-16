@@ -19,7 +19,15 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
+  IO.inspect(secret_key_base, label: "secret key")
+
+  app_name =
+    System.get_env("FLY_APP_NAME") ||
+      raise "FLY_APP_NAME not available"
+
   config :website, WebsiteWeb.Endpoint,
+    check_origin: ["https://davelucia.com", "https://davelucia.fly.dev"],
+    url: [host: "davelucia.com", port: 80],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.

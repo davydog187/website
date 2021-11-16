@@ -8,7 +8,6 @@ defmodule WebsiteWeb.Router do
     plug :put_root_layout, {WebsiteWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug :set_hsts_headers
     plug :redirect_http
   end
 
@@ -25,11 +24,11 @@ defmodule WebsiteWeb.Router do
   def redirect_http(conn, _) do
     case get_req_header(conn, "x-forwarded-proto") do
       ["http"] -> conn |> redirect(external: https_url(conn)) |> halt()
-      _ -> conn
+      _ -> set_hsts_headers(conn)
     end
   end
 
-  def set_hsts_headers(conn, _) do
+  def set_hsts_headers(conn) do
     put_resp_header(
       conn,
       "strict-transport-security",

@@ -38,7 +38,7 @@ COPY assets assets
 COPY lib lib
 
 # Install JS dependencies
-RUN npm --prefix ./assets ci --progress=false --no-audit --loglevel=error
+RUN npm --prefix ./assets install --progress=false --no-audit --loglevel=error
 
 RUN mix assets.deploy
 RUN mix compile

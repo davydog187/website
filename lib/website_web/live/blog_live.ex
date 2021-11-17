@@ -12,11 +12,11 @@ defmodule WebsiteWeb.BlogLive do
         title: "Surface: A Bridge to the JavaScript community",
         link: "https://youtu.be/Lh5rA1pgWCk",
         date: ~D[2021-10-13],
-        conference: "ElixirConf 2021"
+        event: "ElixirConf 2021"
       },
       %{
         type: :talk,
-        title: "Migrating from Kafka to RabbitMQ at SimpleBet: Why and How",
+        title: "Migrating from Kafka to RabbitMQ at Simplebet: Why and How",
         descrioption: """
         At Simplebet, we are striving to make every moment of every sporting event a betting opportunity. In doing so, we initially chose Kafka to deliver market updates. The result was a setup which was difficult and expensive to maintain, and non-trivial for our customers to integrate with. After researching other delivery mechanisms, we migrated to RabbitMQ, as it provided us with a low-cost, low-latency alternative that satisfied our business needs. Best of all, it provided a familiar, standards-based means of integration for our customers with superior flexibility to what Kafka offers.
 
@@ -42,7 +42,7 @@ defmodule WebsiteWeb.BlogLive do
       },
       %{
         type: :podcast,
-        title: "David Lucia, VP of Engineering at SimpleBet",
+        title: "David Lucia, VP of Engineering at Simplebet",
         link: "https://alldus.com/blog/podcasts/aiinaction-david-lucia-simplebet/",
         event: "AI in Action",
         date: ~D[2020-07-21]

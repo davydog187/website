@@ -18,17 +18,22 @@
   <section class="lg:col-span-3 p-2">
     <ul class="flex flex-col text-3xl">
       {#for content <- @content}
-        <li class="flex flex-row py-6 items-center gap-2 border-b border-blue-200 hover:animate-pulse hover:bg-yellow-50">
+        <li class="flex flex-col justify-start py-6 gap-2 border-b border-blue-200 hover:animate-pulse hover:bg-yellow-50">
+          <div class="inline-flex text-xs justify-between items-center uppercase font-bold gap-2">
           {#case content.type}
             {#match :talk}
-              <SVG.speakerphone class="text-blue-600" />
+              <span class="inline-flex items-center gap-2"><SVG.speakerphone class="text-blue-600" /> talk</span>
             {#match :blog}
-              <SVG.newspaper class="text-yellow-600" />
+              <span class="inline-flex items-center gap-2"><SVG.newspaper class="text-yellow-600" /> blog</span>
             {#match :podcast}
-              <SVG.microphone class="text-pink-600" />
+              <span class="inline-flex items-center gap-2"><SVG.microphone class="text-pink-600" /> podcast</span>
           {/case}
 
+            <span>{content.event}</span>
+          </div>
+
           <Link label={content.title} to={content.link} />
+          <div class="text-sm italic">{Calendar.strftime(content.date, "%b %d, %Y")}</div>
         </li>
       {/for}
     </ul>

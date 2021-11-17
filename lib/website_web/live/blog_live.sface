@@ -20,14 +20,14 @@
       {#for content <- @content}
         <li class="flex flex-col justify-start py-6 gap-2 border-b border-blue-200 hover:animate-pulse hover:bg-yellow-50">
           <div class="inline-flex text-xs justify-between items-center uppercase font-bold gap-2">
-          {#case content.type}
-            {#match :talk}
-              <span class="inline-flex items-center gap-2"><SVG.speakerphone class="text-blue-600" /> talk</span>
-            {#match :blog}
-              <span class="inline-flex items-center gap-2"><SVG.newspaper class="text-yellow-600" /> blog</span>
-            {#match :podcast}
-              <span class="inline-flex items-center gap-2"><SVG.microphone class="text-pink-600" /> podcast</span>
-          {/case}
+            {#case content.type}
+              {#match :talk}
+                <span class="inline-flex items-center gap-2"><SVG.speakerphone class="text-blue-600" /> talk</span>
+              {#match :blog}
+                <span class="inline-flex items-center gap-2"><SVG.newspaper class="text-yellow-600" /> blog</span>
+              {#match :podcast}
+                <span class="inline-flex items-center gap-2"><SVG.microphone class="text-pink-600" /> podcast</span>
+            {/case}
 
             <span>{content.event}</span>
           </div>

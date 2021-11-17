@@ -1,2 +1,4 @@
 assets/node_modules/
 deps/
+_build/
+priv/static/assets/

@@ -97,20 +97,20 @@ defmodule WebsiteWeb.Components.SVG do
 
       <style type="text/css">
         .st0 {
-          animation: shift 0.3s linear infinite;
+        animation: shift 0.3s linear infinite;
         }
         @keyframes shift {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(-100px);
-          }
+        from {
+        transform: translateX(0);
+        }
+        to {
+        transform: translateX(-100px);
+        }
         }
         @media (prefers-reduced-motion: reduce) {
-          .st0 {
-            animation: none;
-          }
+        .st0 {
+        animation: none;
+        }
         }
       </style>
     </svg>

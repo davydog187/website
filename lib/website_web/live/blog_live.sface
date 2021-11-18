@@ -1,16 +1,20 @@
-<div class="grid md:grid-cols-3 lg:grid-cols-4">
-  <section class="flex flex-col items-center gap-2 pt-4">
-    <div class="h-64 w-64">
+<div class="grid md:grid-cols-2 lg:grid-cols-4">
+  <section class="flex flex-wrap md:flex-col justify-between md:justify-start items-center gap-2 px-4 pt-4">
+    <div class="w-80 md:h-64 md:w-64 mx-auto max-w-full">
       <img class="rounded-full border-blue-100" src="/images/coffee_w_pearl.png">
     </div>
 
-    <div class="">
-      <h1 class="text-2xl pb-4 squiggle-orange">Hi 👋 I'm <span class="font-medium">Dave Lucia</span></h1>
-      <ul class="pt-2 flex flex-col gap-2 text-md">
+    <div class="w-full md:w-auto mt-4">
+      <h1 class="text-2xl pb-4 squiggle-orange text-center">Hi 👋 I'm <span class="font-medium">{Enum.random(["David", "Dave"])} Lucia</span></h1>
+      <ul class="pt-2 grid grid-cols-2 md:grid-cols-1 grid-rows-2 md:grid-rows-4 grid-flow-col gap-2 text-md mt-2">
         <li>I work at <span class="font-medium">Simplebet</span></li>
         <li>I live in <span class="font-medium">New York</span></li>
-        <li class="inline-flex gap-2"><SVG.twitter /> @davydog187</li>
-        <li class="inline-flex gap-2"><SVG.github /> @davydog187</li>
+        <li class="inline-flex justify-end md:justify-start gap-2">
+          <SVG.twitter /> <Link to="https://twitter.com/davydog187" class="pb-1 hover:squiggle-orange">@davydog187</Link>
+        </li>
+        <li class="inline-flex justify-end md:justify-start gap-2">
+          <SVG.github /> <Link to="https://github.com/davydog187" class="pb-1 hover:squiggle-orange">@davydog187</Link>
+        </li>
       </ul>
     </div>
   </section>

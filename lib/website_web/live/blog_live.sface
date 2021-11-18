@@ -5,7 +5,7 @@
     </div>
 
     <div class="">
-      <h1 class="text-2xl pb-4 squiggle">Hi 👋 I'm <span class="font-medium">Dave Lucia</span></h1>
+      <h1 class="text-2xl pb-4 squiggle-orange">Hi 👋 I'm <span class="font-medium">Dave Lucia</span></h1>
       <ul class="pt-2 flex flex-col gap-2 text-md">
         <li>I work at <span class="font-medium">Simplebet</span></li>
         <li>I live in <span class="font-medium">New York</span></li>
@@ -18,7 +18,7 @@
   <section class="lg:col-span-3 p-2">
     <ul class="flex flex-col text-3xl">
       {#for content <- @content}
-        <li class="flex flex-col justify-start py-6 gap-2 border-b border-blue-200 hover:animate-pulse hover:bg-yellow-50">
+        <li class="flex flex-col justify-start py-6 gap-2 border-b border-blue-200 hover:animate-pulse px-2 hover:squiggle-blue hover:border-none">
           <div class="inline-flex text-xs justify-between items-center uppercase font-bold gap-2">
             {#case content.type}
               {#match :talk}

@@ -58,7 +58,8 @@ config :website, WebsiteWeb.Endpoint,
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"lib/website_web/(live|views|components)/.*(ex|sface|js)$",
-      ~r"lib/website_web/templates/.*(eex)$"
+      ~r"lib/website_web/templates/.*(eex)$",
+      ~r"priv/blogs/*/.*md$"
     ]
   ]
 

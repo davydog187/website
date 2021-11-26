@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "deploy": "NODE_ENV=production postcss css/app.css -o ../priv/static/assets/app.css"
+    "deploy": "NODE_ENV=production tailwindcss --input=css/app.css --output=..priv/static/assets/app.css --postcss"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",

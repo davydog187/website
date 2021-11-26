@@ -1,120 +1,21 @@
 defmodule WebsiteWeb.BlogLive do
   use WebsiteWeb, :live_view
 
+  alias Website.Blog
+
   alias WebsiteWeb.Components.SVG
 
   alias Surface.Components.Link
 
-  def mount(_, _, socket) do
-    content = [
-      %{
-        type: :talk,
-        title: "Surface: A Bridge to the JavaScript community",
-        link: "https://youtu.be/Lh5rA1pgWCk",
-        date: ~D[2021-10-13],
-        event: "ElixirConf 2021"
-      },
-      %{
-        type: :talk,
-        title: "Migrating from Kafka to RabbitMQ at Simplebet: Why and How",
-        description: """
-        At Simplebet, we are striving to make every moment of every sporting event a betting opportunity. In doing so, we initially chose Kafka to deliver market updates. The result was a setup which was difficult and expensive to maintain, and non-trivial for our customers to integrate with. After researching other delivery mechanisms, we migrated to RabbitMQ, as it provided us with a low-cost, low-latency alternative that satisfied our business needs. Best of all, it provided a familiar, standards-based means of integration for our customers with superior flexibility to what Kafka offers.
+  def handle_params(params, _url, socket) do
+    {:noreply, apply_action(socket, socket.assigns.live_action, params)}
+  end
 
-        In this talk, we will cover the technical and business reasons for why RabbitMQ has proven itself to be a great platform for building a B2B SaaS product, how it compares to other tools on the market, and where it excels in flexibility for our customers.
-        """,
-        link: "https://github.com/davydog187/migrating_from_kafka",
-        event: "RabbitMQ Summit 2021",
-        date: ~D[2021-07-13]
-      },
-      %{
-        type: :talk,
-        title: "Panel on Machine Learning on the BEAM",
-        link: "https://youtu.be/lS5VQmvI7is",
-        event: "Code BEAM V EU 2021",
-        date: ~D[2021-05-19]
-      },
-      %{
-        type: :talk,
-        title: "Betting on Observability at Simplebet",
-        link: "https://speakerdeck.com/davydog187/betting-on-observability-at-simplebet",
-        event: "o11yfest",
-        date: ~D[2021-05-18]
-      },
-      %{
-        type: :podcast,
-        title: "David Lucia, VP of Engineering at Simplebet",
-        link: "https://alldus.com/blog/podcasts/aiinaction-david-lucia-simplebet/",
-        event: "AI in Action",
-        date: ~D[2020-07-21]
-      },
-      %{
-        type: :talk,
-        title: "Rustling up predictive sports betting models on the BEAM",
-        link: "https://youtu.be/xmUfTl33-fU",
-        event: "Code BEAM SF 2020",
-        date: ~D[2020-03-05]
-      },
-      %{
-        type: :podcast,
-        title: "Dave Lucia on Rustler - Elixir Internals",
-        link: "https://smartlogic.io/podcast/elixir-wizards/season-two-lucia/",
-        event: "Elixir Wizards",
-        date: ~D[2019-09-26]
-      },
-      %{
-        type: :podcast,
-        title: "The Dream Stack with Rust & Elixir",
-        link:
-          "https://soundcloud.com/elixirtalk/episode-153-feat-dave-lucia-the-dream-stack-with-rust-elixir",
-        event: "ElixirTalk",
-        date: ~D[2019-08-22]
-      },
-      %{
-        type: :podcast,
-        title: "Distributed Elixir with Dave Lucia",
-        link: "https://play.acast.com/s/doesnotcompute/f666bfa1-063d-44f5-9c53-9e6e785cfb1f",
-        event: "Does Not Compute",
-        date: ~D[2019-06-11]
-      },
-      %{
-        type: :podcast,
-        title: "Integrating Rust and Elixir with Dave Lucia",
-        link:
-          "https://play.acast.com/s/65f430a6-1eae-4ddd-bd3b-832dd9220203/85b3b7c2-3c29-489d-97b9-c407e00b82af",
-        event: "Does Not Compute",
-        date: ~D[2019-04-23]
-      },
-      %{
-        type: :talk,
-        title: "Refactoring Elixir for maintainability",
-        link: "https://youtu.be/wvfhrvAFOoQ",
-        event: "Code BEAM SF 2019",
-        date: ~D[2019-02-28]
-      },
-      %{
-        type: :blog,
-        title: "Battleship Elixir: JSON sunk my float",
-        link: "https://medium.com/@davelucia/battleship-elixir-json-sunk-my-float-dc3df46447db",
-        event: "medium",
-        date: ~D[2018-11-26]
-      },
-      %{
-        type: :blog,
-        title: "Two Years of Elixir at The Outline",
-        link: "https://medium.com/@davelucia/two-years-of-elixir-at-the-outline-ad671a56c9ce",
-        event: "medium",
-        date: ~D[2018-09-24]
-      },
-      %{
-        type: :blog,
-        title: "Beyond Functions in Elixir: Refactoring for maintainability",
-        link:
-          "https://medium.com/@davelucia/beyond-functions-in-elixir-refactoring-for-maintainability-5c73daba77f3",
-        event: "medium",
-        date: ~D[2017-12-06]
-      }
-    ]
+  def apply_action(socket, :index, _) do
+    assign(socket, :content, Blog.all())
+  end
 
-    {:ok, assign(socket, :content, content)}
+  def apply_action(socket, :blog, %{"id" => id}) do
+    assign(socket, :post, Blog.get_post(id))
   end
 end

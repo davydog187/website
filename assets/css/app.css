@@ -3,32 +3,64 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* https://codemyui.com/theoutline-squiggle-link-hover-effect/ */
-@responsive {
-  .squiggle-orange {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(-20px);}to {transform:translateX(0);}}%3C/style%3E%3Cpath fill='none' stroke='%23ff9800' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
-    background-position: 0 100%;
-    background-size: auto 3px;
-    background-repeat: repeat-x;
-    text-decoration: none;
+@layer base {
+  h1 {
+    @apply text-4xl mb-4
+  }
+
+  h2 {
+    @apply text-3xl mb-3
+  }
+
+  h3 {
+    @apply text-2xl mb-2
+  }
+
+  h4 {
+    @apply text-2xl mb-1
+  }
+
+  ul, ol {
+    @apply list-inside list-disc
+  }
+
+  a {
+    @apply border-b border-blue-200 hover:squiggle-blue hover:border-opacity-0 pb-1
+  }
+
+  p {
+    @apply leading-loose py-2
+  }
+
+}
+
+@layer utilities {
+  .disable-link {
+    @apply border-none hover:bg-none;
   }
 }
 
-.hover\:squiggle-orange:hover {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(-20px);}to {transform:translateX(0);}}%3C/style%3E%3Cpath fill='none' stroke='%23ff9800' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
-  background-position: 0 100%;
-  background-size: auto 3px;
-  background-repeat: repeat-x;
-  text-decoration: none;
+/* https://codemyui.com/theoutline-squiggle-link-hover-effect/ */
+@responsive {
+  @variants hover {
+    .squiggle-orange {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(-20px);}to {transform:translateX(0);}}%3C/style%3E%3Cpath fill='none' stroke='%23ff9800' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+      background-position: 0 100%;
+      background-size: auto 3px;
+      background-repeat: repeat-x;
+      text-decoration: none;
+    }
+
+    .squiggle-blue {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(-20px);}to {transform:translateX(0);}}%3C/style%3E%3Cpath fill='none' stroke='%23BFDBFF' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+      background-position: 0 100%;
+      background-size: auto 3px;
+      background-repeat: repeat-x;
+      text-decoration: none;
+    }
+  }
 }
 
-.hover\:squiggle-blue:hover {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(-20px);}to {transform:translateX(0);}}%3C/style%3E%3Cpath fill='none' stroke='%23BFDBFF' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
-  background-position: 0 100%;
-  background-size: auto 3px;
-  background-repeat: repeat-x;
-  text-decoration: none;
-}
 
 
 /* Alerts and form errors used by phx.new */

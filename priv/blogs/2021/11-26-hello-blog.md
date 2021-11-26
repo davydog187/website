@@ -16,3 +16,6 @@ Throughout the last five odd years, I've been trying to get more involved in the
 This website is deployed on [fly.io](https://fly.io) using a combination of [Surface](https://surface-ui.org/), [TailwindCSS](https://tailwindcss.com/), and [NimblePublisher](https://github.com/dashbitco/nimble_publisher). I designed this website myself, with some throwbacks to my time at [The Outline](https://theoutline.com/).
 
 If you'd like to see the code, it is Open Source and available on my [Github](https://github.com/davydog187/website).
+
+### Special Thanks
+I'd also like to thank my dear friend, [Stephen Baldwin](https://www.econify.com/), who bought this domain from underneath me over 3 years ago and then proceeded to hold it hostage for 2 years. Without you, none of this would be possible.

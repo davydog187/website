@@ -7,7 +7,7 @@
 }
 ---
 
-Hello and welcome to my new website, [davelucia.com](https://davelucia.com)!
+## Hello and welcome to my new website, [davelucia.com](https://davelucia.com)!
 
 Throughout the last five odd years, I've been trying to get more involved in the [Elixir](https://elixir-lang.org/) community through writing blogs, engaging on Twitter, speaking at conferences, and joining as a guest on several podcasts. This website is a way for me to aggregate all of this content, and hopefully produce more of it!
 

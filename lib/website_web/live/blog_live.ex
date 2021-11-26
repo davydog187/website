@@ -13,10 +13,13 @@ defmodule WebsiteWeb.BlogLive do
   end
 
   def apply_action(socket, :index, _) do
-    assign(socket, :content, Blog.all())
+    title = ~s(Hi 👋 I'm <span class="font-medium">#{Enum.random(["David", "Dave"])} Lucia</span>)
+
+    assign(socket, content: Blog.all(), title: title)
   end
 
   def apply_action(socket, :blog, %{"id" => id}) do
-    assign(socket, :post, Blog.get_post(id))
+    post = Blog.get_post(id)
+    assign(socket, post: Blog.get_post(id), title: post.title)
   end
 end

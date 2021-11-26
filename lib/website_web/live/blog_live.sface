@@ -2,7 +2,7 @@
   <section class="flex flex-wrap md:flex-col justify-between md:justify-start items-center gap-2 px-4 pt-4">
     <div class="w-80 md:h-64 md:w-64 mx-auto max-w-full">
       <Link to="/">
-      <img class="rounded-full border-blue-100" src="/images/dave_flannel.jpg">
+        <img class="rounded-full border-blue-100" src="/images/dave_flannel.jpg">
       </Link>
     </div>
 
@@ -21,8 +21,8 @@
     </div>
   </section>
 
-    <section class="lg:col-span-3 p-2">
-      {#if @live_action == :index}
+  <section class="lg:col-span-3 p-2">
+    {#if @live_action == :index}
       <ul class="flex flex-col text-3xl">
         {#for content <- @content}
           <li class="flex flex-col justify-start py-6 gap-2 border-b border-blue-200 hover:animate-pulse px-2 hover:squiggle-blue hover:border-opacity-0">
@@ -44,14 +44,18 @@
           </li>
         {/for}
       </ul>
-      {#else}
-        <div class="p-4 relative">
-          <div class="text-sm italic pb-2 md:text-right">
-            Published <time datetime={@post.date}>{Calendar.strftime(@post.date, "%b %d, %Y")}</time>
-          </div>
-          <h1>{@post.title}</h1>
-          {Phoenix.HTML.raw(@post.body)}
+    {#else}
+      <div class="p-4 relative">
+        <div class="text-sm italic pb-2 md:text-right">
+          Published <time datetime={@post.date}>{Calendar.strftime(@post.date, "%b %d, %Y")}</time>
         </div>
-      {/if}
-    </section>
+        <h1>{@post.title}</h1>
+        <div>
+          {Phoenix.HTML.raw(@post.body)}
+
+          <div class="mt-6 text-sm italics text-gray-600">See a mistake/bug? Edit this article on <Link to={Post.github_url(@post)}>Github</Link></div>
+        </div>
+      </div>
+    {/if}
+  </section>
 </div>

@@ -2,6 +2,7 @@ defmodule WebsiteWeb.BlogLive do
   use WebsiteWeb, :live_view
 
   alias Website.Blog
+  alias Website.Blog.Post
 
   alias WebsiteWeb.Components.SVG
 

@@ -5,19 +5,19 @@
 
 @layer base {
   h1 {
-    @apply text-4xl mb-4
+    @apply text-4xl my-4 text-gray-900
   }
 
   h2 {
-    @apply text-3xl mb-3
+    @apply text-3xl my-3
   }
 
   h3 {
-    @apply text-2xl mb-2
+    @apply text-2xl my-2
   }
 
   h4 {
-    @apply text-2xl mb-1
+    @apply text-2xl my-1
   }
 
   ul, ol {

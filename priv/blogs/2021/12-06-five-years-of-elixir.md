@@ -7,6 +7,11 @@
 ---
 Five years ago I left my job to pursue the startup life and to work with Elixir full-time. I wrote about my first [two years of experience at The Outline](https://medium.com/@davelucia/two-years-of-elixir-at-the-outline-ad671a56c9ce), which was able to serve millions of users per month with a small team of developers and only ran on two Heroku dynos. The last three years, I've been at a sports technology company called [Simplebet](https://simplebet.io).
 
+Things to mention
+* Open Source work
+* Conferences
+* Getting involved on Twitter
+
 ## Highlights
 
 ### Elixir remains extremely stable
@@ -16,6 +21,12 @@ tktktk
 ### Phoenix LiveView and Surface are a game-changer
 
 tktktk
+
+### NIFs
+
+### RabbitMQ
+
+### CQRS / Commanded
 
 ### Elixir continues to expand into new domains
 

@@ -127,6 +127,6 @@ defmodule Website.Blog do
   def all, do: @all
 
   def get_post(id) do
-    Enum.find(all(), &(&1.id == id))
+    Enum.find(all(), &(&1[:id] == id))
   end
 end

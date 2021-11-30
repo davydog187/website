@@ -7,6 +7,14 @@ defmodule Website.Blog do
 
   @content [
     %{
+      type: :podcast,
+      title: "RabbitMQ and Commanded at Simplebet with Dave Lucia",
+      link:
+        "https://thinkingelixir.com/podcast-episodes/075-rabbitmq-and-commanded-at-simplebet-with-dave-lucia/",
+      date: ~D[2021-11-30],
+      event: "Thinking Elixir"
+    },
+    %{
       type: :talk,
       title: "Surface: A Bridge to the JavaScript community",
       link: "https://youtu.be/Lh5rA1pgWCk",

@@ -2,6 +2,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "prismjs/themes/prism-tomorrow.css";
 
 @layer base {
   h1 {
@@ -9,15 +10,15 @@
   }
 
   h2 {
-    @apply text-3xl my-3
+    @apply text-3xl my-3 text-gray-900
   }
 
   h3 {
-    @apply text-2xl my-2
+    @apply text-xl my-2 text-gray-900
   }
 
   h4 {
-    @apply text-2xl my-1
+    @apply text-lg my-2 text-gray-900
   }
 
   ul, ol {

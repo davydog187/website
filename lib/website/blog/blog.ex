@@ -2,7 +2,10 @@ defmodule Website.Blog do
   use NimblePublisher,
     build: Website.Blog.Post,
     from: Application.app_dir(:website, "priv/blogs/**/*.md"),
-    earmark_options: [postprocessor: &Website.Blog.Markdown.post_processor/1],
+    earmark_options: [
+      postprocessor: &Website.Blog.Markdown.post_processor/1,
+      code_class_prefix: "language-"
+    ],
     as: :posts
 
   @content [

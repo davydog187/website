@@ -1,18 +1,29 @@
 defmodule Website.Blog.Markdown do
   def post_processor({"pre", attrs, children, meta}) do
-    {"pre", [{"class", "highlight p-2"} | attrs], ["nope"], meta}
-  end
-
-  def post_processor({"code", attrs, children, meta} = node) do
-    attrs = [{"class", "whatup"} | attrs]
-    children = children |> to_string() |> Makeup.highlight()
-
-    {"code", attrs, ["farts"], meta}
+    {"pre", [{"id", id(children)}, {"phx-hook", "prism"}, {"class", "highlight p-2"} | attrs],
+     children, meta}
   end
 
   def post_processor(other), do: other
 
   def to_html(string) do
     Earmark.as_html!(string, compact_output: true, postprocessor: &__MODULE__.post_processor/1)
+  end
+
+  defp id(ast) do
+    ast |> text() |> hash() |> Base.encode64()
+  end
+
+  defp hash(iodata), do: :crypto.hash(:md5, iodata)
+
+  defp text(list) when is_list(list) do
+    Enum.map(list, &text/1)
+  end
+
+  defp text({_tag, _attrs, children, _meta}) do
+    case children do
+      [binary] when is_binary(binary) -> [binary]
+      list -> text(list)
+    end
   end
 end

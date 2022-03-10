@@ -61,6 +61,10 @@
   }
 }
 
+pre {
+  max-width: 90vw
+}
+
 code {
   @apply bg-red-400 p-px rounded
 }

@@ -38,6 +38,10 @@
   .disable-link {
     @apply border-none hover:bg-none;
   }
+
+  .focus-mode a {
+    @apply border-transparent;
+  }
 }
 
 /* https://codemyui.com/theoutline-squiggle-link-hover-effect/ */
@@ -63,9 +67,9 @@
 
 pre {
   max-width: 90vw;
-  @apply rounded-lg
+  @apply rounded-lg;
 }
 
 code {
-  @apply bg-red-400 p-px rounded
+  @apply bg-red-400 p-px rounded;
 }

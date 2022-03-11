@@ -46,10 +46,19 @@
       </ul>
     {#else}
       <div class="p-4 relative">
-        <div class="text-sm italic pb-2 md:text-right">
-          Published <time datetime={@post.date}>{Calendar.strftime(@post.date, "%b %d, %Y")}</time>
+        <div class="flex justify-between items-center gap-6">
+          <p class="text-sm italic p-0">
+            Published <time datetime={@post.date}>{Calendar.strftime(@post.date, "%b %d, %Y")}</time>
+          </p>
+
+          <button :on-click="toggle-focus-mode">
+            <div class={"flex justify-center items-center gap-2 rounded-full p-2 cursor-pointer", "bg-blue-600": @is_focus_mode, "bg-gray-300": !@is_focus_mode}>
+              <SVG.self_improvement class={"text-blue-600": !@is_focus_mode, "text-gray-300 ": @is_focus_mode} />
+            </div>
+          </button>
         </div>
-        <div>
+
+        <div class={"focus-mode": @is_focus_mode}>
           {Phoenix.HTML.raw(@post.body)}
 
           <div class="mt-6 text-sm italics text-gray-600">See a mistake/bug? Edit this article on <Link to={Post.github_url(@post)}>Github</Link></div>

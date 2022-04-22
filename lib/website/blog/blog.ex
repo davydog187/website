@@ -32,7 +32,7 @@ defmodule Website.Blog do
 
                In this talk, we will cover the technical and business reasons for why RabbitMQ has proven itself to be a great platform for building a B2B SaaS product, how it compares to other tools on the market, and where it excels in flexibility for our customers.
                """,
-               link: "https://github.com/davydog187/migrating_from_kafka",
+               link: "https://www.youtube.com/watch?v=dmBdFh5N1g4",
                event: "RabbitMQ Summit 2021",
                date: ~D[2021-07-13]
              },

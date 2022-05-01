@@ -10,6 +10,20 @@ defmodule Website.Blog do
 
   @content [
              %{
+               type: :talk,
+               title: "AvroEx 2.0 Improvements",
+               link: "https://youtu.be/uT6EbezP12s",
+               date: ~D[2022-04-29],
+               event: "The Big Elixir"
+             },
+             %{
+               type: :talk,
+               title: "Surface: A bridge to the JavaScript community - Part two",
+               link: "https://youtu.be/qJtlE1fmwrs",
+               date: ~D[2022-04-29],
+               event: "The Big Elixir"
+             },
+             %{
                type: :podcast,
                title: "RabbitMQ and Commanded at Simplebet with Dave Lucia",
                link:

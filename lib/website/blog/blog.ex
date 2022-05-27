@@ -10,6 +10,13 @@ defmodule Website.Blog do
 
   @content [
              %{
+               type: :podcast,
+               title: "Avro and Elixir with Dave Lucia",
+               link: "https://podcast.thinkingelixir.com/97",
+               date: ~D[2022-05-03],
+               event: "Thinking Elixir"
+             },
+             %{
                type: :talk,
                title: "AvroEx 2.0 Improvements",
                link: "https://youtu.be/uT6EbezP12s",

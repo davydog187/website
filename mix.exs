@@ -33,21 +33,21 @@ defmodule Website.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
+      {:esbuild, "~> 0.5", runtime: Mix.env() == :dev},
+      {:tailwind, "~> 0.1.6", runtime: Mix.env() == :dev},
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix, "~> 1.6.2"},
-      {:makeup_elixir, "~> 0.15.2"},
+      {:makeup_elixir, "~> 0.16.0"},
       {:makeup_erlang, "~> 0.1.1"},
       {:nimble_publisher, "~> 0.1.2"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.16.0"},
+      {:phoenix_live_view, "~> 0.17.0"},
       {:plug_cowboy, "~> 2.5"},
       {:jason, "~> 1.2"},
-      {:surface, "~> 0.6.0"},
+      {:surface, "~> 0.7.0"},
       {:telemetry_metrics, "~> 0.6"},
-      {:telemetry_poller, "~> 1.0"},
-      {:surface_formatter, "~> 0.6.0"}
+      {:telemetry_poller, "~> 1.0"}
     ]
   end
 
@@ -60,11 +60,7 @@ defmodule Website.MixProject do
   defp aliases do
     [
       setup: ["deps.get"],
-      "assets.deploy": [
-        "cmd --cd assets npm run deploy",
-        "esbuild default --minify",
-        "phx.digest"
-      ]
+      "assets.deploy": ["esbuild default --minify", "tailwind default --minify", "phx.digest"]
     ]
   end
 end

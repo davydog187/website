@@ -1,14 +1,6 @@
 {
-  "scripts": {
-    "deploy": "NODE_ENV=production tailwindcss --input=css/app.css --output=../priv/static/assets/app.css --postcss"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.3.11",
-    "postcss-cli": "^9.0.2",
-    "postcss-import": "^14.0.2",
-    "tailwindcss": "^2.2.19"
-  },
+  "main": "js/app.js",
+  "scripts": {},
   "dependencies": {
     "prismjs": "^1.27.0"
   }

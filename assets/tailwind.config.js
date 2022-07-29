@@ -1,15 +1,15 @@
 module.exports = {
-  mode: "jit",
-  purge: ["./js/**/*.js", "../lib/*_web/**/*.*ex", "../lib/*_web/**/*.*sface"],
+  content: [
+    './js/**/*.js',
+    '../lib/*_web.{ex,sface}',
+    '../lib/*_web/**/*.{*ex,sface}'
+  ],
   theme: {
     extend: {
       fontFamily: {
         serif: ['"Noto Serif"']
       }
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The blog and personal website of Dave Lucia">
+    <meta property="og:image" content="https://davelucia.com/images/dave_flannel.jpg">
+    <link rel="icon" href="/pineapple.ico">
+
+    {csrf_meta_tag()}
+    {live_title_tag(assigns[:page_title] || "Dave Lucia's Website")}
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}>
+
+    <script defer data-domain="davelucia.com" src="https://plausible.io/js/plausible.js" />
+    <script
+      defer
+      phx-track-static
+      type="text/javascript"
+      src={Routes.static_path(@conn, "/assets/app.js")}
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif">
+  </head>
+  <body>
+    <header class="sticky top-0 bg-white z-10">
+      <section class="container mx-auto">
+        <nav class="border-b border-slate-200 inline-flex md:items-center justify-between w-full px-4 md:px-0 py-1">
+          <div class="text-lg md:text-2xl py-2 font-medium" href="/">
+            <a href="/" class="font-medium italic border-0">
+              <span class="tracking-tighter">
+              <span class="text-blue-600 font-bold hidden md:inline">D</span>
+              <span class="text-orange-600 pr-4 font-bold hidden md:inline">L</span>
+              </span>
+              Dave Lucia's Blog
+            </a>
+          </div>
+          <ul class="inline-flex list-none gap-2 text-right items-center justify-end text-xs md:text-base">
+            <li><a href="https://twitter.com/davydog187" class="border-0" target="_blank">Twitter</a></li>
+            <li><a href="https://github.com/davydog187" class="border-0" target="_blank">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/david-lucia-a395441b/" class="border-0" target="_blank">LinkedIn</a></li>
+          </ul>
+        </nav>
+      </section>
+    </header>
+    {@inner_content}
+  </body>
+</html>

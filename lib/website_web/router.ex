@@ -18,8 +18,8 @@ defmodule WebsiteWeb.Router do
   scope "/", WebsiteWeb do
     pipe_through :browser
 
-    live "/", BlogLive, :index
-    live "/blog/:id", BlogLive, :blog
+    live "/", BlogLive.Index, :index
+    live "/blog/:id", BlogLive.Show, :show
   end
 
   def redirect_http(conn, _) do

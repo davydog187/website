@@ -22,9 +22,19 @@
   </section>
 
   <section class="lg:col-span-3 p-2 relative">
+    <ul class="list-none inline-flex gap-2 pl-2">
+      {#for filter <- [:all, :blog, :talk, :podcast]}
+        <li><button
+            type="button"
+            :on-click="filter-content"
+            :values={filter: filter}
+            class={"text-slate-600", "border-b": @filter_selected == filter}
+          >{Phoenix.Naming.humanize(filter)}</button></li>
+      {/for}
+    </ul>
     <ul class="flex flex-col text-3xl max-h-[90vh] md:overflow-auto">
-      {#for content <- @content}
-        <li class="flex flex-col justify-start py-6 gap-2 border-b border-blue-200 hover:animate-pulse px-2 hover:squiggle-blue hover:border-opacity-0">
+      {#for content <- Enum.filter(@content, @filter)}
+        <li class="flex flex-col justify-start py-6 gap-2 border-b border-blue-200 px-2 hover:squiggle-blue hover:border-opacity-0">
           <div class="inline-flex text-xs justify-between items-center uppercase font-bold gap-2">
             {#case content.type}
               {#match :talk}

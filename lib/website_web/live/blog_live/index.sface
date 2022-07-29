@@ -22,7 +22,7 @@
   </section>
 
   <section class="lg:col-span-3 p-2 relative">
-    <ul class="flex flex-col text-3xl max-h-[90vh] overflow-auto">
+    <ul class="flex flex-col text-3xl max-h-[90vh] md:overflow-auto">
       {#for content <- @content}
         <li class="flex flex-col justify-start py-6 gap-2 border-b border-blue-200 hover:animate-pulse px-2 hover:squiggle-blue hover:border-opacity-0">
           <div class="inline-flex text-xs justify-between items-center uppercase font-bold gap-2">

@@ -35,9 +35,9 @@
             </a>
           </div>
           <ul class="inline-flex list-none gap-2 text-right items-center justify-end text-xs md:text-base">
-            <li><a href="https://twitter.com/davydog187" class="border-0" target="_blank">Twitter</a></li>
-            <li><a href="https://github.com/davydog187" class="border-0" target="_blank">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/david-lucia-a395441b/" class="border-0" target="_blank">LinkedIn</a></li>
+            <li><a href="https://twitter.com/davydog187" class="border-0" target="_blank"><SVG.twitter /></a></li>
+            <li><a href="https://github.com/davydog187" class="border-0" target="_blank"><SVG.github /></a></li>
+            <li><a href="https://www.linkedin.com/in/david-lucia-a395441b/" class="border-0" target="_blank"><SVG.linkedin /></a></li>
           </ul>
         </nav>
       </section>

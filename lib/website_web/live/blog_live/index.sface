@@ -21,8 +21,8 @@
     </div>
   </section>
 
-  <section class="lg:col-span-3 relative px-2 md:px-0">
-    <ul class="list-none inline-flex gap-2 pt-4 mb-2 w-full pl-2 md:pl-0 sticky top-0 z-10 bg-white">
+  <section class="lg:col-span-3 relative px-2 md:px-0 max-h-[90vh]  md:overflow-auto">
+    <ul class="list-none inline-flex gap-2 pt-4 mb-2 w-full pl-2 md:pl-0 md:sticky top-0 z-10 bg-white">
       {#for filter <- [:all, :blog, :talk, :podcast]}
         <li><button
             type="button"
@@ -32,7 +32,7 @@
           >{Phoenix.Naming.humanize(filter)}</button></li>
       {/for}
     </ul>
-    <ul class="flex flex-col text-3xl max-h-[90vh] md:overflow-auto">
+    <ul class="flex flex-col text-3xl">
       {#for content <- Enum.filter(@content, @filter)}
         <li class="flex flex-col justify-start py-6 gap-2 border-b border-blue-200 px-2 hover:squiggle-blue hover:border-opacity-0">
           <div class="inline-flex text-xs justify-between items-center uppercase font-bold gap-2">

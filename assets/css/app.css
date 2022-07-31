@@ -25,6 +25,10 @@
     @apply list-inside list-disc
   }
 
+  li {
+    @apply leading-8
+  }
+
   a {
     @apply border-b border-blue-200 hover:squiggle-blue hover:border-opacity-0 pb-1
   }

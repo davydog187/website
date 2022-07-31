@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The blog and personal website of Dave Lucia">
     <meta property="og:image" content={og_image(assigns[:page_title]) |> raw()}>
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/pineapple.ico">
 
     {csrf_meta_tag()}

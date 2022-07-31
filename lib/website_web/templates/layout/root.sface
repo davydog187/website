@@ -21,15 +21,15 @@
     />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif">
   </head>
-  <body class="md:max-h-screen md:overflow-hidden">
+  <body>
     <header class="sticky top-0 bg-white z-10">
       <section class="container max-w-5xl mx-auto">
         <nav class="border-b border-slate-200 inline-flex md:items-center justify-between w-full px-4 md:px-0 py-1">
           <div class="text-lg md:text-2xl py-2 font-medium" href="/">
             <a href="/" class="font-medium italic border-0">
               <span class="tracking-[-0.1em]">
-              <span class="text-blue-600 font-bold hidden md:inline">D</span>
-              <span class="text-orange-600 pr-4 font-bold hidden md:inline">L</span>
+                <span class="text-blue-600 font-bold hidden md:inline">D</span>
+                <span class="text-orange-600 pr-4 font-bold hidden md:inline">L</span>
               </span>
               Dave Lucia's Blog
             </a>

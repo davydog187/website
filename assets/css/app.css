@@ -6,11 +6,11 @@
 
 @layer base {
   h1 {
-    @apply text-4xl pt-2 my-4 text-gray-900
+    @apply text-4xl pt-2 my-4 text-gray-900 font-medium
   }
 
   h2 {
-    @apply text-3xl pt-2 my-3 text-gray-900
+    @apply text-3xl pt-2 my-3 text-gray-900 font-medium
   }
 
   h3 {

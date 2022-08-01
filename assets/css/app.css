@@ -6,19 +6,19 @@
 
 @layer base {
   h1 {
-    @apply text-4xl pt-2 my-4 text-gray-900 font-medium font-sans;
+    @apply text-4xl pt-2 my-4 text-gray-900 font-semibold font-sans;
   }
 
   h2 {
-    @apply text-3xl pt-2 my-3 text-gray-900 font-medium font-sans;
+    @apply text-3xl pt-2 my-3 text-gray-900 font-semibold font-sans;
   }
 
   h3 {
-    @apply text-xl pt-2 my-2 text-gray-900 font-medium font-sans;
+    @apply text-xl pt-2 my-2 text-gray-900 font-semibold font-sans;
   }
 
   h4 {
-    @apply text-lg py-2 my-2 text-gray-900 font-medium font-sans;
+    @apply text-lg py-2 my-2 text-gray-900 font-semibold font-sans;
   }
 
   ul, ol {

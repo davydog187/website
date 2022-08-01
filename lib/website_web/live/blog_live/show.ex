@@ -17,7 +17,7 @@ defmodule WebsiteWeb.BlogLive.Show do
 
   def render(assigns) do
     ~F"""
-    <div class="relative mx-4 md:mx-auto max-w-5xl">
+    <div class="relative mx-4 md:mx-0">
       <div class="absolute left-0 top-0 text-sm italic pb-2">
         Published <time datetime={@post.date}>{Calendar.strftime(@post.date, "%b %d, %Y")}</time>
       </div>

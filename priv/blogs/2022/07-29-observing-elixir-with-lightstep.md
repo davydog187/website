@@ -1,6 +1,6 @@
-# Observing Elixir with OpenTelemetry, Lightstep, and Honeycomb
+# Observability in Elixir with OpenTelemetry, Lightstep, and Honeycomb
 %{
-    title: "Observing Elixir with OpenTelemetry, Lightstep, and Honeycomb",
+    title: "Observability in Elixir with OpenTelemetry, Lightstep, and Honeycomb",
     author: "Dave Lucia",
     tags: ~w(elixir observability lightstep),
     description: "How to integrate your Elixir application with Open Telemetry to make it observable in Lightstep and Honeycomb's reliability platform"

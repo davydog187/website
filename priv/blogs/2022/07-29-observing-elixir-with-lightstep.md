@@ -25,7 +25,7 @@ You might be in need of improving the observability of your system. Luckily, tod
 
 ## Can I get observability with an APM like New Relic, AppSignal, or DataDog?
 
-Yes...and no. Application Performance Monitors (APMs) are a great way to get some observability of your system with little instrumentation. Out of the box, they will give you useful insights such as latency percentiles for each of the routes in your web application. From this metric data, you'll be able to see when you have a latency or rate spike on a particular route, due to increased traffic, a bug, or some infrastructure level problem. However, these tools only tell you **what** the problem is, they won't help you answer **why** it is happening, which is critical for the step of actually addressing any problems your application may be experiencing.
+Yes...and no. Application Performance Monitors (APMs) are a great way to get some observability of your system with little instrumentation. Out of the box, they will give you useful insights such as latency percentiles for each of the routes in your web application. From this metric data, you'll be able to see when you have a latency or rate spike on a particular route, due to increased traffic, a bug, or some infrastructure level problem. However, these tools only tell you **what** the problem is, they won't answer directly **why** it is happening, which is critical for the step of actually addressing any problems your application may be experiencing.
 
 ## You want telemetry data at different levels of granularity
 

@@ -62,7 +62,7 @@ First we'll add the required dependencies into our `mix.exs` file for producing 
 
 Additionally, you should install instrumentation libraries for any of the popular libraries and frameworks you may be using
 
-```
+```elixir
 # mix.exs
 {:opentelemetry_ecto, "~> 1.0"},
 {:opentelemetry_liveview, "~> 1.0.0-rc.4"},

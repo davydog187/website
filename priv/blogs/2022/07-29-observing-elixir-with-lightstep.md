@@ -108,6 +108,40 @@ Before we start sending data, we need to add a few configurations to our app
 
 Although observability is important, if it fails it shouldn't take your app down with it! To ensure this is the case, we need to make sure `openteletry` runs in temporary mode
 
+```elixir
+# mix.exs
+
+def project do
+  [
+    ...,
+    releases: [
+      my_app: [
+          applications: [my_app: :permanent, opentelemetry: :temporary]
+      ]
+    ]
+  ]
+end
+```
+
+2. Set your runtime specific attributes for your production environment
+
+My application currently runs in [https://fly.io]. In the startup script for my Elixir release, I add the following annotations so that every span has information about the server and environment it is executed in. Note that there are more options that you can set, see the [OpenTelemetry semantic conventions for the cloud](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/cloud.md)
+
+```elixir
+read -r -d '' attributes << EOM
+service.name=${FLY_APP_NAME},
+service.instance.id=${FLY_ALLOC_ID},
+cloud.provider=fly_io,
+cloud.region.id=${FLY_REGION}
+EOM
+
+readonly OTEL_RESOURCE_ATTRIBUTES=`echo $attributes | sed 's/[[:space:]]//g'`
+
+OTEL_RESOURCE_ATTRIBUTES=${OTEL_RESOURCE_ATTRIBUTES} \
+    PHX_SERVER=true \
+    exec ./bitfo start
+```
+
 ## Sending data to Lightstep or Honeycomb
 
 ## Why choose? Send to both using the otel-collector

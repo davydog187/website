@@ -1,4 +1,4 @@
-# Document Title
+# Observing Elixir with OpenTelemetry, Lightstep, and Honeycomb
 %{
     title: "Observing Elixir with OpenTelemetry, Lightstep, and Honeycomb",
     author: "Dave Lucia",

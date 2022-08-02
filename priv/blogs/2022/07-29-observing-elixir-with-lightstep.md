@@ -47,6 +47,67 @@ We can achieve the above with [OpenTelemetry](https://opentelemetry.io/docs/inst
 
 ## Instrumenting your Elixir app with OpenTelemetry
 
+Let's instrument a brand new Elixir app with OpenTelemetry. For this guide, I'll assume you have a [Phoenix application](https://www.phoenixframework.org/) using [Elixir 1.13](https://elixir-lang.org/blog/2021/12/03/elixir-v1-13-0-released/) or newer.
+
+### Install Dependencies
+
+First we'll add the required dependencies into our `mix.exs` file for producing traces and spans with OpenTelemetry
+
+```elixir
+# mix.exs
+{:opentelemetry, "~> 1.0"},
+{:opentelemetry_api, "~> 1.0"},
+{:opentelemetry_exporter, "~> 1.0", only: :prod},
+```
+
+Additionally, you should install instrumentation libraries for any of the popular libraries and frameworks you may be using
+
+```
+# mix.exs
+{:opentelemetry_ecto, "~> 1.0"},
+{:opentelemetry_liveview, "~> 1.0.0-rc.4"},
+{:opentelemetry_oban, "~> 0.2.0-rc.5"},
+{:opentelemetry_phoenix, "~> 1.0"},
+```
+
+Once you run `mix deps.get`, its time to instrument your application
+
+### Instrumenting libraries
+
+As we saw above, there are many packages above that can give you great tracing to the libraries you're already using. These libraries typically work by hooking into [telemetry](https://hexdocs.pm/telemetry/readme.html) events produced by these libraries and converting them into OpenTelemetry spans. Note that this is a point of confusion for many people, as the `telemetry` library is an BEAM-specific package for producing telemetry data inside a BEAM application, and is not directly related to OpenTelemetry. However, it is a useful mechanism for libraries, such as [opentelemetry_ecto](https://github.com/open-telemetry/opentelemetry-erlang-contrib/blob/main/instrumentation/opentelemetry_ecto/lib/opentelemetry_ecto.ex#L42) to hook into for producing spans.
+
+To start using these libraries, most simply require calling a `setup/1` function in our Application supervision tree.
+
+```elixir
+# my_app/lib/my_app/application.ex
+defmodule MyApp.Application do
+  use Application
+ 
+  def start(_type, _args) do
+    OpentelemetryPhoenix.setup()
+    OpentelemetryLiveView.setup()
+    OpentelemetryEcto.setup([:my_app, :repo])
+
+    # Only trace jobs to minimize noise
+    OpentelemetryOban.setup(trace: [:jobs])
+  
+    ...
+  end
+end
+```
+
+### Instrumenting your application
+
+With distributed tracing, it is recommended to start by tracing the [boundaries of your application](https://vi.to/hubs/o11yfest/videos/3149?v=%2Fvideos%2F3149). As we saw above, we can get spans into many of the entrypoints of our application just by using out-of-the-box libraries. However, there may be internal operations that may need spans, or maybe you want to add additional information to spans that are already being produced, such as adding the `user_id` to every span in your [plug](https://hexdocs.pm/plug/readme.html) pipeline.
+
+### Configuration
+
+Before we start sending data, we need to add a few configurations to our app
+
+1. Run the `opentelemetry` application as temporary
+
+Although observability is important, if it fails it shouldn't take your app down with it! To ensure this is the case, we need to make sure `openteletry` runs in temporary mode
+
 ## Sending data to Lightstep or Honeycomb
 
 ## Why choose? Send to both using the otel-collector

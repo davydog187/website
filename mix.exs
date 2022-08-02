@@ -45,7 +45,7 @@ defmodule Website.MixProject do
       {:phoenix_live_view, "~> 0.17.0"},
       {:plug_cowboy, "~> 2.5"},
       {:jason, "~> 1.2"},
-      {:surface, "~> 0.7.0"},
+      {:surface, github: "surface-ui/surface", branch: "main"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"}
     ]

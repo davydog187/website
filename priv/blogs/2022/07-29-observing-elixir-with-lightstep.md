@@ -213,7 +213,7 @@ This means that you can use Honeycomb and Lightstep at the same time, compare an
 
 This is only the tip of the iceberg for getting started with observability. For actually correlating production issues with these tools, please dig into the excellent documentation of [Lightstep](https://docs.lightstep.com/) and [Honeycomb](https://docs.honeycomb.io/) for setting up queries, dashboards, alerts, and more. 
 
-If you're interested in getting deeper, the amazing [Charity Majors](), [Liz Fong-Jones](), and [George Miranda]() wrote a book called [Observability Engineerging: Achieving Production Excellence] that promises to go way deeper on the topic of observability.
+If you're interested in getting deeper, the amazing [Charity Majors](https://charity.wtf), [Liz Fong-Jones](https://www.lizthegrey.com/), and [George Miranda](https://twitter.com/gmiranda23?s=20&t=mKz2oJPxqn42zXU35Q8dmA) wrote a book called [Observability Engineerging: Achieving Production Excellence] that promises to go way deeper on the topic of observability.
 
 For Elixir-specific issues, hit me up on [Twitter](https://twitter.com/davydog187) or the fine folks of the [Erlang Obserability Working Group](https://erlef.org/wg/observability). And if you are interested, please consider supporting them or joining their working group, they can always use an extra hand!
 

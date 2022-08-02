@@ -75,5 +75,5 @@ pre {
 }
 
 code {
-  @apply bg-red-400 p-px rounded
+  @apply bg-orange-400 px-1 rounded text-slate-50
 }

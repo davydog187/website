@@ -21,8 +21,16 @@
     @apply text-lg py-2 my-2 text-gray-900 font-semibold font-sans;
   }
 
-  ul, ol {
-    @apply list-inside list-disc
+  ul {
+    @apply list-inside list-disc text-slate-600;
+  }
+
+  ol {
+    @apply list-inside list-decimal text-slate-600;
+  }
+
+  strong {
+    @apply text-slate-800 font-bold;
   }
 
   li {

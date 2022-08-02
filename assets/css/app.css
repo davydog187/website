@@ -22,11 +22,11 @@
   }
 
   ul {
-    @apply list-inside list-disc text-slate-600;
+    @apply list-inside list-disc
   }
 
   ol {
-    @apply list-inside list-decimal text-slate-600;
+    @apply list-inside list-decimal
   }
 
   strong {
@@ -34,7 +34,7 @@
   }
 
   li {
-    @apply leading-8
+    @apply leading-8 text-slate-700
   }
 
   a {

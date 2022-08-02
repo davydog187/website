@@ -125,9 +125,14 @@ end
 
 2. Set your runtime specific attributes for your production environment
 
-My application currently runs in [https://fly.io]. In the startup script for my Elixir release, I add the following annotations so that every span has information about the server and environment it is executed in. Note that there are more options that you can set, see the [OpenTelemetry semantic conventions for the cloud](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/cloud.md)
+My application currently runs in [fly.io](https://fly.io). In the startup script for my Elixir release, I add the following annotations so that every span has information about the server and environment it is executed in. Note that there are more options that you can set, see the [OpenTelemetry semantic conventions for the cloud](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/cloud.md)
 
-```elixir
+```bash
+# my_app/rel/overlays/bin/server
+
+#!/bin/sh
+cd -P -- "$(dirname -- "$0")"
+
 read -r -d '' attributes << EOM
 service.name=${FLY_APP_NAME},
 service.instance.id=${FLY_ALLOC_ID},
@@ -142,7 +147,76 @@ OTEL_RESOURCE_ATTRIBUTES=${OTEL_RESOURCE_ATTRIBUTES} \
     exec ./bitfo start
 ```
 
+3. Last but not least, we must configure `opentelemtry` to process our spans
+
+In dev and test, we're not going to send our spans anywhere, so they become a noop
+
+```elixir
+# my_app/config/{dev,test}.exs
+
+# Use the noop tracer in dev
+config :opentelemetry,
+       :tracer,
+       :otel_tracer_noop
+```
+
+However, in production we want them to be processed and sent to our tooling of choice, using the [`otlp` protocol](https://opentelemetry.io/docs/reference/specification/protocol/)
+
+```elixir
+  config :opentelemetry,
+    span_processor: :batch,
+    exporter: :otlp
+```
+
 ## Sending data to Lightstep or Honeycomb
 
+Now its time to send data to an observability vendor for analysis. [Honeycomb](https://www.honeycomb.io/) and [Lightstep](https://lightstep.com/) are both excellent products with generous free tiers for getting started. I am personally partial to Lightstep, and did a [case-study with them while Simplebet](https://lightstep.com/case-studies/simplebet). In my opinion, Lightstep makes it a bit easier to get started with features such as their [Service Directory](https://docs.lightstep.com/docs/view-individual-service-performance). However, both platforms have their strengths and weaknesses, and you cannot go wrong with either.
+
+### Configuring Lightstep
+
+Sign up for lightstep, grab your [access token](https://docs.lightstep.com/docs/create-and-manage-access-tokens), and add the following to your configuration
+
+```elixir
+# runtime.exs
+config :opentelemetry_exporter,
+  otlp_protocol: :http_protobuf,
+  otlp_traces_endpoint: "https://ingest.lightstep.com:443/traces/otlp/v0.9",
+  otlp_compression: :gzip,
+  otlp_headers: [
+    {"lightstep-access-token", System.get_env("LIGHTSTEP_ACCESS_TOKEN")}
+  ]
+```
+
+### Configuring Honeycomb
+
+Sign up for honeycomb, grab your API Key, then
+
+```elxir
+# runtime.exs
+config :opentelemetry_exporter,
+  otlp_protocol: :http_protobuf,
+  otlp_endpoint: "https://api.honeycomb.io:443",
+  otlp_headers: [
+    {"x-honeycomb-team", System.get_env("HONEYCOMB_API_KEY")},
+    {"x-honeycomb-dataset", System.get_env("FLY_APP_NAME")}
+  ]
+```
+
 ## Why choose? Send to both using the otel-collector
+
+Alright Veruca Salt, you want the whole world. Part of the selling points of OpenTelemetry is that it aims to provide a vendor-agnostic means for shipping telemetry data to any vendor. If you have the means, deploying the [otel-collector](https://opentelemetry.io/docs/collector/) into your infrastructure will allow your application to directly export spans to the collector, and let the collector pick and choose one more more vendors to export spans to. 
+
+This means that you can use Honeycomb and Lightstep at the same time, compare and contrast their feature sets, and then choose whom you'd like to upgrade your plan with, if you need to.
+
+
+## Conclusion
+
+This is only the tip of the iceberg for getting started with observability. For actually correlating production issues with these tools, please dig into the excellent documentation of [Lightstep](https://docs.lightstep.com/) and [Honeycomb](https://docs.honeycomb.io/) for setting up queries, dashboards, alerts, and more. 
+
+If you're interested in getting deeper, the amazing [Charity Majors](), [Liz Fong-Jones](), and [George Miranda]() wrote a book called [Observability Engineerging: Achieving Production Excellence] that promises to go way deeper on the topic of observability.
+
+For Elixir-specific issues, hit me up on [Twitter](https://twitter.com/davydog187) or the fine folks of the [Erlang Obserability Working Group](https://erlef.org/wg/observability). And if you are interested, please consider supporting them or joining their working group, they can always use an extra hand!
+
+
+Thanks for reading!
 

@@ -4,6 +4,7 @@ window.Prism.manual = true;
 import Prism from "prismjs";
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-elixir';
+import 'prismjs/components/prism-bash';
 
 export default {
     prism: {

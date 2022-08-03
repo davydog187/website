@@ -12,7 +12,7 @@ defmodule WebsiteWeb.BlogLive.Show do
 
   def apply_action(socket, :show, %{"id" => id}) do
     post = Blog.get_post(id)
-    assign(socket, post: Blog.get_post(id), title: post.title, page_title: post.title)
+    assign(socket, post: Blog.get_post(id), title: post.title, description: post.description, page_title: post.title)
   end
 
   def render(assigns) do

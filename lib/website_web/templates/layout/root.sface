@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The blog and personal website of Dave Lucia">
+    <meta name="description" content={assigns[:description] || "The blog and personal website of Dave Lucia"}>
     <meta property="og:title" content={assigns[:page_title] || "Dave Lucia's Website"}>
     <meta property="og:image" content={og_image(assigns[:page_title]) |> raw()}>
     <meta name="twitter:card" content="summary_large_image">
@@ -29,7 +29,8 @@
       <section class="">
         <nav class="border-b border-slate-200 inline-flex md:items-center justify-between w-full px-4 md:px-0 py-1 relative">
           <div class="text-lg md:text-2xl py-2 font-medium" href="/">
-            <img src={Routes.static_path(@conn, "/images/pineapple-trans.png")} class="absolute h-16 w-16 right-full top-0"/>
+            {!-- Pineapple should be width=373 height=560 ratio=0.66 --}
+            <img src={Routes.static_path(@conn, "/images/pineapple-trans.png")} class="absolute w-12 aspect-[2/3] right-full top-0"/>
             <a href="/" class="font-medium font-sans italic border-0 inline-flex items-end">
               Dave Lucia's Blog
             </a>

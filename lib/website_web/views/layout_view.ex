@@ -13,7 +13,7 @@ defmodule WebsiteWeb.LayoutView do
     %URI{
       uri
       | path: "/" <> URI.encode(text || "Dave Lucia's Website"),
-        query: URI.encode_query(%{widths: "408", heights: "612"})
+        query: URI.encode_query(%{widths: "408", heights: "612", fontSize: "80px"})
     }
     |> to_string
   end

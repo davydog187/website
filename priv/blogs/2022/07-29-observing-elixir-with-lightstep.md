@@ -54,7 +54,7 @@ Now collecting all of this data is great, but data is not inherently valuable on
 1. The ability to capture and export distributed traces of spans in our running system
 2. A tool for analyzing our traces to correlate issues with root causes
 
-We can achieve the above with [OpenTelemetry](https://opentelemetry.io/docs/instrumentation/erlang/) and an analysis tool like [Lightstep](https://www.honeycomb.io/) or [Honeycomb](https://www.honeycomb.io/).
+We can achieve the above with [OpenTelemetry](https://opentelemetry.io/docs/instrumentation/erlang/) and an analysis tool like [Lightstep](https://www.lightstep.com/) or [Honeycomb](https://www.honeycomb.io/).
 
 ## Instrumenting your Elixir app with OpenTelemetry
 
@@ -242,7 +242,7 @@ For Elixir-specific issues, hit me up on [Twitter](https://twitter.com/davydog18
 
 ## Special Thanks
 
-Thank you to all those who [offered to proofread and fact-check](https://twitter.com/davydog187/status/1554527578060472320?s=20&t=Hzb5paV375c0ghKUCYC2pg) this post. Special thanks to [Bernardo Amorim](https://twitter.com/BernardoDCGA), [Michael Crumm](https://twitter.com/mcrumm), [Paulo Valente](https://twitter.com/polvalente), and [Sundi Myint](https://twitter.com/sundikhin) who all provided invaluable feedback to this post.
+Thank you to all those who [offered to proofread and fact-check](https://twitter.com/davydog187/status/1554527578060472320?s=20&t=Hzb5paV375c0ghKUCYC2pg) this post. Special thanks to [Bernardo Amorim](https://twitter.com/BernardoDCGA), [Herminio Torres](https://twitter.com/herminiotorres), [Michael Crumm](https://twitter.com/mcrumm), [Paulo Valente](https://twitter.com/polvalente), and [Sundi Myint](https://twitter.com/sundikhin) who all provided invaluable feedback to this post.
 
 
 Thanks for reading!

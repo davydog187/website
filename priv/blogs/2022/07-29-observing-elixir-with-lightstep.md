@@ -210,7 +210,7 @@ config :opentelemetry_exporter,
 
 ### Configuring Elixir for Honeycomb 
 
-Sign up for honeycomb, grab your API Key, then
+Sign up for Honeycomb, grab your API key, then
 
 ```elixir
 # runtime.exs

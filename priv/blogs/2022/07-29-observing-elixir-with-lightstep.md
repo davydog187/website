@@ -29,6 +29,10 @@ Yes...and no. Application Performance Monitors (APMs) are a great way to get som
 
 ## You want telemetry data at different levels of granularity
 
+> ### What is cardinality? {: .info}
+> 
+> TKTKTKTK
+
 In order to understand what's happening in your system, it's important to be able to see the big picture, and then zoom into various parts of your application to explore and discover regressions and issues. When I think about instrumenting my application with telemetry, I want the following kinds of data coming out of my system
 
 1. **Tracing** - [High-cardinality, high-dimensional](https://www.honeycomb.io/blog/so-you-want-to-build-an-observability-tool/) spans annotating the critical operations of my application (Helps me explore, discover, and correlate specific issues)
@@ -52,6 +56,10 @@ Let's instrument a brand new Elixir app with OpenTelemetry. For this guide, I'll
 ### Install Dependencies
 
 First we'll add the required dependencies into our `mix.exs` file for producing traces and spans with OpenTelemetry
+
+> ### Is it safe to use rc releases? {: .info}
+>
+> You'll notice a number of OpenTelemetry libraries are in `rc`, or release-candidate status. Using release candidates carries some inherent risk, but are generally safe to use. They are put in this status to indicate that there are some changes that have not fully stabilized, but they are nearing a major release.
 
 ```elixir
 # mix.exs
@@ -77,6 +85,12 @@ Once you run `mix deps.get`, its time to instrument your application
 As we saw above, there are many packages above that can give you great tracing to the libraries you're already using. These libraries typically work by hooking into [telemetry](https://hexdocs.pm/telemetry/readme.html) events produced by these libraries and converting them into OpenTelemetry spans. Note that this is a point of confusion for many people, as the `telemetry` library is an BEAM-specific package for producing telemetry data inside a BEAM application, and is not directly related to OpenTelemetry. However, it is a useful mechanism for libraries, such as [opentelemetry_ecto](https://github.com/open-telemetry/opentelemetry-erlang-contrib/blob/main/instrumentation/opentelemetry_ecto/lib/opentelemetry_ecto.ex#L42) to hook into for producing spans.
 
 To start using these libraries, most simply require calling a `setup/1` function in our Application supervision tree.
+
+> #### What is telemetry? {: .info}
+>
+> Telemetry was a project that originally started in Phoenix, and was later taken on as a library agnostic project to provide a library agnostic means to producing events and run custom handlers. The code for telemetry is small, simple, and quite clever. I recommended reading through the [source code](https://github.com/beam-telemetry/telemetry/blob/main/src/telemetry.erl#L153) to demystify its mechanism.
+>
+> I also recommend reading through [Phoenix's Telemetry Guide](https://hexdocs.pm/phoenix/telemetry.html) for learning how you can integrate your own events into your application.
 
 ```elixir
 # my_app/lib/my_app/application.ex
@@ -106,7 +120,7 @@ Before we start sending data, we need to add a few configurations to our app
 
 1. Run the `opentelemetry` application as temporary
 
-Although observability is important, if it fails it shouldn't take your app down with it! To ensure this is the case, we need to make sure `openteletry` runs in temporary mode
+Although observability is important, if it fails it shouldn't take your app down with it! To ensure this is the case, we need to make sure `opentelemetry` runs in temporary mode
 
 ```elixir
 # mix.exs
@@ -191,7 +205,7 @@ config :opentelemetry_exporter,
 
 Sign up for honeycomb, grab your API Key, then
 
-```elxir
+```elixir
 # runtime.exs
 config :opentelemetry_exporter,
   otlp_protocol: :http_protobuf,
@@ -213,9 +227,13 @@ This means that you can use Honeycomb and Lightstep at the same time, compare an
 
 This is only the tip of the iceberg for getting started with observability. For actually correlating production issues with these tools, please dig into the excellent documentation of [Lightstep](https://docs.lightstep.com/) and [Honeycomb](https://docs.honeycomb.io/) for setting up queries, dashboards, alerts, and more. 
 
-If you're interested in getting deeper, the amazing [Charity Majors](https://charity.wtf), [Liz Fong-Jones](https://www.lizthegrey.com/), and [George Miranda](https://twitter.com/gmiranda23?s=20&t=mKz2oJPxqn42zXU35Q8dmA) wrote a book called [Observability Engineerging: Achieving Production Excellence] that promises to go way deeper on the topic of observability.
+If you're interested in getting deeper, the amazing [Charity Majors](https://charity.wtf), [Liz Fong-Jones](https://www.lizthegrey.com/), and [George Miranda](https://twitter.com/gmiranda23?s=20&t=mKz2oJPxqn42zXU35Q8dmA) wrote a book called [Observability Engineerging: Achieving Production Excellence](https://www.oreilly.com/library/view/observability-engineering/9781492076438/) that promises to go way deeper on the topic of observability.
 
 For Elixir-specific issues, hit me up on [Twitter](https://twitter.com/davydog187) or the fine folks of the [Erlang Obserability Working Group](https://erlef.org/wg/observability). And if you are interested, please consider supporting them or joining their working group, they can always use an extra hand!
+
+## Special Thanks
+
+Thank you to all those who [offered to proofread and fact-check](https://twitter.com/davydog187/status/1554527578060472320?s=20&t=Hzb5paV375c0ghKUCYC2pg) this post. Special thanks to tktkttktk.
 
 
 Thanks for reading!

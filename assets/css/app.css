@@ -44,6 +44,23 @@
   p {
     @apply leading-loose py-2 text-slate-600
   }
+
+
+}
+
+@layer components {
+  .admonition {
+    @apply border-l-4 border-l-blue-400 border border-slate-100 rounded-md drop-shadow md:mx-4 lg:max-w-xl lg:float-right;
+  }
+
+  .admonition p {
+    @apply px-2
+  }
+
+  .admonition > .info {
+    @apply bg-blue-200 text-black pl-2 text-lg my-0 font-bold font-sans;
+  }
+
 }
 
 @layer utilities {

@@ -4,6 +4,10 @@ defmodule Website.Blog.Markdown do
      children, meta}
   end
 
+  def post_processor({"blockquote", attrs, [{_tag, [{"class", admonition}], _children, _meta} | _], meta} = line) when admonition in ["info"] do
+    Earmark.AstTools.merge_atts_in_node(line, class: "admonition admonition-#{admonition}")
+  end
+
   def post_processor(other), do: other
 
   def to_html(string) do

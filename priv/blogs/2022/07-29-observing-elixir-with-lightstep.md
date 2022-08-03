@@ -170,7 +170,7 @@ OTEL_RESOURCE_ATTRIBUTES=${OTEL_RESOURCE_ATTRIBUTES} \
 
 3. Last but not least, we must configure `opentelemetry` to process our spans
 
-In dev and test, we're not going to send our spans anywhere, so they become a noop
+In dev and test, we're not going to send our spans anywhere, so they become a noop (*no-op*, tech slang for "no operation")
 
 ```elixir
 # my_app/config/{dev,test}.exs

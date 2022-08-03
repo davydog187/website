@@ -172,15 +172,24 @@ OTEL_RESOURCE_ATTRIBUTES=${OTEL_RESOURCE_ATTRIBUTES} \
 
 3. Last but not least, we must configure `opentelemetry` to process our spans
 
-In dev and test, we're not going to send our spans anywhere, so they become a noop (*no-op*, tech slang for "no operation")
+In dev, we can validate our setup using the [standard output exporter](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/apps/opentelemetry/src/otel_exporter_stdout.erl). I like to make this optional with an environment variable, so that I can turn off span production via the  [`:otel_tracer_noop`](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/apps/opentelemetry_api/src/otel_tracer_noop.erl) tracer when I'm not testing my OpenTelemetry setup.
 
 ```elixir
 # config/{dev,test}.exs
 
-# Use the noop tracer in dev
-config :opentelemetry,
-       :tracer,
-       :otel_tracer_noop
+# Turn on logging spans to the console via
+# DEBUG_OTEL=true mix phx.server
+
+if System.get_env("DEBUG_OTEL") == "true" do
+  config :opentelemetry, :processors,
+    otel_batch_processor: %{
+      exporter: {:otel_exporter_stdout, []}
+    }
+else
+  config :opentelemetry,
+    :tracer,
+    :otel_tracer_noop
+end
 ```
 
 However, in production we want them to be processed and sent to our tooling of choice, using the [`otlp` protocol](https://opentelemetry.io/docs/reference/specification/protocol/)

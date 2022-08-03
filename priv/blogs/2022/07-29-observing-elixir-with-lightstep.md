@@ -231,6 +231,13 @@ Alright Veruca Salt, you want the whole world. Part of the selling points of Ope
 
 This means that you can use Honeycomb and Lightstep at the same time, compare and contrast their feature sets, and then choose whom you'd like to upgrade your plan with, if you need to.
 
+## Analyzing OpenTelemetry data with Lightstep
+
+Now that you're producing OpenTelemetry data, you will begin to see latency and error data populate in your Service Directory. This is a great starting point for exploring the operations in your application
+
+![](/images/lightstep-service-directory.png)
+
+However, the real value of Lightstep is using [streams](https://docs.lightstep.com/docs/monitor-a-service-level-indicator-with-streams) and finding root-causes to issues using their [correlation analysis tools](https://docs.lightstep.com/docs/find-correlated-areas-of-latency). Take a tour of their documentation and learn how to make effective use of their reliability platform.
 
 ## Conclusion
 

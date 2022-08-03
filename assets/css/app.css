@@ -44,6 +44,10 @@
   p {
     @apply leading-loose py-2 text-slate-600
   }
+
+  p > img {
+    @apply mx-auto;
+  }
 }
 
 @layer components {

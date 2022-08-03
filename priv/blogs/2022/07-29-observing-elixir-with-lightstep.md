@@ -23,7 +23,7 @@ Observability is simply the ability to observe your running system, with the pur
 
 If you've ever had questions like:
 
-* Why does my `/api/foo/thing` route's latency suddenly have triple the normal average?
+* Why does the latency of the `/api/foo/thing` route suddenly triple the normal average?
 * What is causing this memory spike in my application?
 * Is this production outage affecting all of my users?
 

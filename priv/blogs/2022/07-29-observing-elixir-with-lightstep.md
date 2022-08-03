@@ -40,7 +40,7 @@ Yes...and no. Application Performance Monitors (APMs) are a great way to get som
 > *Cardinality* is a fancy word for the size of a given set. For instance, the cardinality of wheels in a bicycle is 2 -- that is, a given bicycle has 0, 1 or 2 wheels -- and the cardinality of the number of living humans is approximately 10 Billion. 
 > When talking about observability, we need to worry about this because some metrics have high cardinality (i.e. a "user has logged in metric" has the same cardinality as the number of users) and some technologies can't handle that very well. We also need to keep in mind that the cardinality is composed, so the cardinality for the set of HTTP paths on your API is `number of URLs * number of HTTP methods`
 
-In order to understand what's happening in your system, it's important to be able to see the big picture, and then zoom into various parts of your application to explore and discover regressions and issues. When I think about instrumenting my application with telemetry, I want the following kinds of data coming out of my system
+In order to understand what's happening in your system, it's important to be able to see the big picture, and then zoom into various parts of your application to explore and discover regressions and issues. When I think about instrumenting my application with [telemetry](https://en.wikipedia.org/wiki/Telemetry), I want the following kinds of data coming out of my system
 
 1. **Tracing** - [High-cardinality, high-dimensional](https://www.honeycomb.io/blog/so-you-want-to-build-an-observability-tool/) spans annotating the critical operations of my application (Helps me explore, discover, and correlate specific issues)
 2. **Metrics** - Low cardinality aggregate information (What's the summary of what's happening in the system over time?)
@@ -93,14 +93,14 @@ As we saw above, there are many packages above that can give you great tracing t
 
 To start using these libraries, most simply require calling a `setup/1` function in our Application supervision tree.
 
-> #### What is telemetry? {: .info}
+> #### `:telemetry` vs `OpenTelemetry`, what's the difference? {: .info}
 >
-> Telemetry was a project that originally started in Phoenix, and was later taken on as a library agnostic project to provide a library agnostic means to producing events and run custom handlers. The code for telemetry is small, simple, and quite clever. I recommended reading through the [source code](https://github.com/beam-telemetry/telemetry/blob/main/src/telemetry.erl#L153) to demystify its mechanism.
+> `:telemetry` is an [Erlang](https://www.erlang.org/) library for providing a language & library agnostic means to produce and hook into telemetry events in a BEAM application. I recommend reading the [source code](https://github.com/beam-telemetry/telemetry/blob/main/src/telemetry.erl#L153) to demystify how it works, its implementation is quite clever. Check the [Phoenix Telemetry guide](https://hexdocs.pm/phoenix/telemetry.html) for learning how you can integrate `:telemetry` events into your application.
 >
-> I also recommend reading through [Phoenix's Telemetry Guide](https://hexdocs.pm/phoenix/telemetry.html) for learning how you can integrate your own events into your application.
+> [OpenTelemetry](https://opentelemetry.io/) is a language-agnostic set of tools, APIs, and SDKs for instrumenting, generating, collecting, and exporting telemetry data. Since most libraries produce `:telemetry` events, libraries such as [opentelemetry_phoenix](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_phoenix) hook into these events and convert them into spans using the [Erlang/Elixir OpenTelemetry library](https://github.com/open-telemetry/opentelemetry-erlang).
 
 ```elixir
-# my_app/lib/my_app/application.ex
+# lib/my_app/application.ex
 defmodule MyApp.Application do
   use Application
  
@@ -149,7 +149,7 @@ end
 My application currently runs in [fly.io](https://fly.io). In the startup script for my Elixir release, I add the following annotations so that every span has information about the server and environment it is executed in. Note that there are more options that you can set, see the [OpenTelemetry semantic conventions for the cloud](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/cloud.md)
 
 ```bash
-# my_app/rel/overlays/bin/server
+# rel/overlays/bin/server
 
 #!/bin/sh
 cd -P -- "$(dirname -- "$0")"
@@ -173,7 +173,7 @@ OTEL_RESOURCE_ATTRIBUTES=${OTEL_RESOURCE_ATTRIBUTES} \
 In dev and test, we're not going to send our spans anywhere, so they become a noop (*no-op*, tech slang for "no operation")
 
 ```elixir
-# my_app/config/{dev,test}.exs
+# config/{dev,test}.exs
 
 # Use the noop tracer in dev
 config :opentelemetry,
@@ -184,9 +184,11 @@ config :opentelemetry,
 However, in production we want them to be processed and sent to our tooling of choice, using the [`otlp` protocol](https://opentelemetry.io/docs/reference/specification/protocol/)
 
 ```elixir
-  config :opentelemetry,
-    span_processor: :batch,
-    exporter: :otlp
+# config/runtime.exs
+
+config :opentelemetry,
+  span_processor: :batch,
+  exporter: :otlp
 ```
 
 ## Sending data to Lightstep or Honeycomb

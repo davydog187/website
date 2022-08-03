@@ -37,7 +37,8 @@ Yes...and no. Application Performance Monitors (APMs) are a great way to get som
 
 > ### What is cardinality? {: .info}
 > 
-> TKTKTKTK
+> *Cardinality* is a fancy word for the size of a given set. For instance, the cardinality of wheels in a bicycle is 2 -- that is, a given bicycle has 0, 1 or 2 wheels -- and the cardinality of the number of living humans is approximately 10 Billion. 
+> When talking about observability, we need to worry about this because some metrics have high cardinality (i.e. a "user has logged in metric" has the same cardinality as the number of users) and some technologies can't handle that very well. We also need to keep in mind that the cardinality is composed, so the cardinality for the set of HTTP paths on your API is `number of URLs * number of HTTP methods`
 
 In order to understand what's happening in your system, it's important to be able to see the big picture, and then zoom into various parts of your application to explore and discover regressions and issues. When I think about instrumenting my application with telemetry, I want the following kinds of data coming out of my system
 

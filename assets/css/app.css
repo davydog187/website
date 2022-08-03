@@ -47,6 +47,9 @@
 }
 
 @layer components {
+  .admonition {
+    @apply m-2 mb-12;
+  }
   .admonition-info {
     @apply border-l-4 border-l-blue-400 border border-slate-100 rounded-md drop-shadow md:ml-4 lg:max-w-xl lg:float-right;
   }

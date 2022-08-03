@@ -17,7 +17,7 @@ Observability is simply the ability to observe your running system, with the pur
 
 > ### I'm hiring! {: .hiring}
 > 
-> If you're interested in observability, the BEAM, and Elixir, I'm hiring engineers at Bitfo. 
+> If you're interested in observability, the BEAM, and Elixir, I'm hiring engineers at [Bitfo](https://bitfo.com).
 >
 > [Apply today!](https://jobs.gusto.com/postings/bitfo-backend-engineer-1bd420ee-e23b-4ad4-8cb2-8030a84c4089)
 

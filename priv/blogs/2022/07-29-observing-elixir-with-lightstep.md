@@ -242,7 +242,7 @@ For Elixir-specific issues, hit me up on [Twitter](https://twitter.com/davydog18
 
 ## Special Thanks
 
-Thank you to all those who [offered to proofread and fact-check](https://twitter.com/davydog187/status/1554527578060472320?s=20&t=Hzb5paV375c0ghKUCYC2pg) this post. Special thanks to tktkttktk.
+Thank you to all those who [offered to proofread and fact-check](https://twitter.com/davydog187/status/1554527578060472320?s=20&t=Hzb5paV375c0ghKUCYC2pg) this post. Special thanks to [Bernardo Amorim](https://twitter.com/BernardoDCGA), [Michael Crumm](https://twitter.com/mcrumm), [Paulo Valente](https://twitter.com/polvalente), and [Sundi Myint](https://twitter.com/sundikhin) who all provided invaluable feedback to this post.
 
 
 Thanks for reading!

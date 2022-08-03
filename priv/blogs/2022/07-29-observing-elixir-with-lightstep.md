@@ -15,6 +15,12 @@ When I wake up in the morning, its time to figure out what went wrong, fix the b
 
 Observability is simply the ability to observe your running system, with the purpose of understanding its behavior. Forget the [three pillars](https://youtu.be/EJV_CgiqlOE), or anything else you might have read, observability is all about information, tools, and analysis to get to the bottom of your burning questions faster.
 
+> ### I'm hiring! {: .hiring}
+> 
+> If you're interested in observability, the BEAM, and Elixir, I'm hiring engineers at Bitfo. 
+>
+> [Apply today!](https://jobs.gusto.com/postings/bitfo-backend-engineer-1bd420ee-e23b-4ad4-8cb2-8030a84c4089)
+
 If you've ever had questions like:
 
 * Why does my `/api/foo/thing` route's latency suddenly have triple the normal average?
@@ -186,7 +192,7 @@ However, in production we want them to be processed and sent to our tooling of c
 
 Now its time to send data to an observability vendor for analysis. [Honeycomb](https://www.honeycomb.io/) and [Lightstep](https://lightstep.com/) are both excellent products with generous free tiers for getting started. I am personally partial to Lightstep, and did a [case-study with them while Simplebet](https://lightstep.com/case-studies/simplebet). In my opinion, Lightstep makes it a bit easier to get started with features such as their [Service Directory](https://docs.lightstep.com/docs/view-individual-service-performance). However, both platforms have their strengths and weaknesses, and you cannot go wrong with either.
 
-### Configuring Lightstep
+### Configuring Elixir for Lightstep
 
 Sign up for lightstep, grab your [access token](https://docs.lightstep.com/docs/create-and-manage-access-tokens), and add the following to your configuration
 
@@ -201,7 +207,7 @@ config :opentelemetry_exporter,
   ]
 ```
 
-### Configuring Honeycomb
+### Configuring Elixir for Honeycomb 
 
 Sign up for honeycomb, grab your API Key, then
 

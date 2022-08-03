@@ -4,8 +4,18 @@ defmodule Website.Blog.Markdown do
      children, meta}
   end
 
-  def post_processor({"blockquote", attrs, [{_tag, [{"class", admonition}], _children, _meta} | _], meta} = line) when admonition in ["info"] do
-    Earmark.AstTools.merge_atts_in_node(line, class: "admonition admonition-#{admonition}")
+  def post_processor(
+        {"blockquote", attrs, [{_tag, [{"class", admonition}], _children, _meta} | _], meta} =
+          line
+      )
+      when admonition in ["info", "hiring"] do
+    class =
+      case admonition do
+        "info" -> "admonition-info"
+        "hiring" -> "admonition-hiring"
+      end
+
+    Earmark.AstTools.merge_atts_in_node(line, class: "admonition #{class}")
   end
 
   def post_processor(other), do: other

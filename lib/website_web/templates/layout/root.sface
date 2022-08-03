@@ -7,7 +7,7 @@
     <meta name="description" content="The blog and personal website of Dave Lucia">
     <meta property="og:title" content={assigns[:page_title] || "Dave Lucia's Website"}>
     <meta property="og:image" content={og_image(assigns[:page_title]) |> raw()}>
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="/pineapple.ico">
 
     {csrf_meta_tag()}

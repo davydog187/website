@@ -47,7 +47,8 @@ defmodule Website.MixProject do
       {:jason, "~> 1.2"},
       {:surface, github: "surface-ui/surface", branch: "main"},
       {:telemetry_metrics, "~> 0.6"},
-      {:telemetry_poller, "~> 1.0"}
+      {:telemetry_poller, "~> 1.0"},
+      {:xml_builder, "~> 2.2"}
     ]
   end
 

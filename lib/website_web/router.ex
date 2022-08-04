@@ -20,6 +20,8 @@ defmodule WebsiteWeb.Router do
 
     live "/", BlogLive.Index, :index
     live "/blog/:id", BlogLive.Show, :show
+
+    get "/rss.xml", RssController, :index
   end
 
   def redirect_http(conn, _) do

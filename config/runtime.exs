@@ -21,7 +21,7 @@ if config_env() == :prod do
 
   config :website, WebsiteWeb.Endpoint,
     check_origin: ["https://davelucia.com", "https://davelucia.fly.dev"],
-    url: [host: "davelucia.com", port: 80, scheme: "https"],
+    url: [host: "davelucia.com", scheme: "https"],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.

@@ -17,7 +17,6 @@ defmodule WebsiteWeb.AtomController do
 
     items =
       posts
-      |> Enum.filter(&match?(%Website.Blog.Post{}, &1))
       |> Enum.map(&entry/1)
 
     feed =
@@ -40,7 +39,13 @@ defmodule WebsiteWeb.AtomController do
   end
 
   defp entry(%{date: date, description: description, link: link, title: title}) do
-    url = WebsiteWeb.Endpoint.url() <> link
+    host = URI.new!(Endpoint.url())
+
+    url =
+      case URI.new!(link) do
+        %URI{host: nil, path: path} -> %URI{host | path: path}
+        url -> url
+      end
 
     {:entry, %{},
      [
@@ -48,7 +53,7 @@ defmodule WebsiteWeb.AtomController do
        {:summary, [], description},
        {:published, [], to_datetime(date)},
        {:updated, [], to_datetime(date)},
-       {:link, %{href: url}},
+       {:link, %{href: to_string(url)}},
        {:id, [], url}
      ]}
   end

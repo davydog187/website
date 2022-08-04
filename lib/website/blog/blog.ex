@@ -148,7 +148,7 @@ defmodule Website.Blog do
                date: ~D[2017-12-06]
              }
            ]
-           |> Enum.map(&Map.merge(&1, %{id: nil}))
+           |> Enum.map(&Map.merge(&1, %{id: nil, description: &1.title}))
 
   @all Enum.sort_by(@posts ++ @content, & &1.date, {:desc, Date})
 

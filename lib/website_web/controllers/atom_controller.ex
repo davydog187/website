@@ -11,7 +11,7 @@ defmodule WebsiteWeb.AtomController do
     url = Routes.blog_index_url(conn, :index)
     description = "The blog and personal website of Dave Lucia"
 
-    posts = Blog.all() |> IO.inspect()
+    posts = Blog.all()
 
     updated_at = Enum.max_by(posts, & &1.date, Date).date
 

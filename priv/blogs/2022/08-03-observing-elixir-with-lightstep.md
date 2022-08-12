@@ -204,7 +204,7 @@ config :opentelemetry,
 
 ## Sending data to Lightstep or Honeycomb
 
-Now its time to send data to an observability vendor for analysis. [Honeycomb](https://www.honeycomb.io/) and [Lightstep](https://lightstep.com/) are both excellent products with generous free tiers for getting started. I am personally partial to Lightstep, and did a [case-study with them while Simplebet](https://lightstep.com/case-studies/simplebet). In my opinion, Lightstep makes it a bit easier to get started with features such as their [Service Directory](https://docs.lightstep.com/docs/view-individual-service-performance). However, both platforms have their strengths and weaknesses, and you cannot go wrong with either.
+Now its time to send data to an observability vendor for analysis. [Honeycomb](https://www.honeycomb.io/) and [Lightstep](https://lightstep.com/) are both excellent products with generous free tiers for getting started. I am personally partial to Lightstep, and did a [case-study with them while at Simplebet](https://lightstep.com/case-studies/simplebet). In my opinion, Lightstep makes it a bit easier to get started with features such as their [Service Directory](https://docs.lightstep.com/docs/view-individual-service-performance). However, both platforms have their strengths and weaknesses, and you cannot go wrong with either.
 
 ### Configuring Elixir for Lightstep
 

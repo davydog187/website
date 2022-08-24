@@ -16,11 +16,11 @@ $ mix hex.repo add oban https://getoban.pro/repo \
   --auth-key <YOUR_API_KEY>
 ```
 
-However, when deploying to the cloud using Docker, things get a bit more complicated. Passing your API key when building a Docker image should be done securely, and takes a little know-how.
+However, when deploying to the cloud using Docker, it is not so simple. Passing your API key when building a Docker image should be done securely, and takes a little know-how.
 
 ## Deploy a Docker image with Oban Pro, using GitHub Actions and Fly.io
 
-I deploy my service using [Fly.io](https://fly.io/), which provides a command-line tool called `flyctl`. Our challenge is to securely pass our API to `flyctl` when building our docker image using [Docker build secrets](https://docs.docker.com/develop/develop-images/build_enhancements/#new-docker-build-secret-information) and the `flyctl deploy` [--build-secret](https://fly.io/docs/reference/build-secrets/) option.
+I deploy my service using [Fly.io](https://fly.io/), which provides a command-line tool called `flyctl`. Our challenge is to securely pass our API key to `flyctl` when building our docker image using [Docker build secrets](https://docs.docker.com/develop/develop-images/build_enhancements/#new-docker-build-secret-information) and the `flyctl deploy` [--build-secret](https://fly.io/docs/reference/build-secrets/) option.
 
 ### Setting up your Dockerfile
 

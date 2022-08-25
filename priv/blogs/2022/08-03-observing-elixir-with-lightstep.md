@@ -70,11 +70,13 @@ First we'll add the required dependencies into our `mix.exs` file for producing 
 >
 > You'll notice a number of OpenTelemetry libraries are in `rc`, or release-candidate status. Using release candidates carries some inherent risk, but are generally safe to use. They are put in this status to indicate that there are some changes that have not fully stabilized, but they are nearing a major release.
 
+Note `opentelemetry_exporter` has to be placed first in the dependencies list.
+
 ```elixir
 # mix.exs
+{:opentelemetry_exporter, "~> 1.0"},
 {:opentelemetry, "~> 1.0"},
 {:opentelemetry_api, "~> 1.0"},
-{:opentelemetry_exporter, "~> 1.0", only: :prod},
 ```
 
 Additionally, you should install instrumentation libraries for any of the popular libraries and frameworks you may be using
@@ -131,6 +133,8 @@ Before we start sending data, we need to add a few configurations to our app
 
 Although observability is important, if it fails it shouldn't take your app down with it! To ensure this is the case, we need to make sure `opentelemetry` runs in temporary mode
 
+We also need to put `opentelemetry_exporter` before other `opentelemetry` in the release's applications list, to make sure the applications it depends on are started properly.
+
 ```elixir
 # mix.exs
 
@@ -139,7 +143,11 @@ def project do
     ...,
     releases: [
       my_app: [
-          applications: [my_app: :permanent, opentelemetry: :temporary]
+        applications: [
+          my_app: :permanent,
+          opentelemetry_exporter: :permanent,
+          opentelemetry: :temporary
+        ]
       ]
     ]
   ]

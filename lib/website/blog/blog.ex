@@ -11,6 +11,13 @@ defmodule Website.Blog do
   @content [
              %{
                type: :podcast,
+               title: "Dave Lucia on Observability at Bitfo",
+               link: "https://share.fireside.fm/episode/IAs5ixts+87YV43bE",
+               date: ~D[2022-09-29],
+               event: "Elixir Wizards"
+             },
+             %{
+               type: :podcast,
                title: "Avro and Elixir with Dave Lucia",
                link: "https://podcast.thinkingelixir.com/97",
                date: ~D[2022-05-03],

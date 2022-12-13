@@ -11,6 +11,21 @@ defmodule Website.Blog do
   @content [
              %{
                type: :podcast,
+               title: "Time series data with Timescale DB",
+               link: "https://podcast.thinkingelixir.com/129",
+               date: ~D[2022-12-13],
+               event: "Thinking Elixir"
+             },
+             %{
+               type: :podcast,
+               title: "Understanding Observability in Elixir with Dave Lucia",
+               link:
+                 "https://topenddevs.com/podcasts/elixir-mix/episodes/understanding-observability-in-elixir-with-dave-lucia-emx-195",
+               date: ~D[2022-11-23],
+               event: "Elixir Mix"
+             },
+             %{
+               type: :podcast,
                title: "Dave Lucia on Observability at Bitfo",
                link: "https://share.fireside.fm/episode/IAs5ixts+87YV43bE",
                date: ~D[2022-09-29],

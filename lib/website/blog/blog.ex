@@ -11,6 +11,13 @@ defmodule Website.Blog do
   @content [
              %{
                type: :podcast,
+               title: "Dave Lucia and Elixir's superpowers",
+               link: "https://www.beamrad.io/45",
+               date: ~D[2023-02-02],
+               event: "Beam Radio"
+             },
+             %{
+               type: :podcast,
                title: "Time series data with Timescale DB",
                link: "https://podcast.thinkingelixir.com/129",
                date: ~D[2022-12-13],

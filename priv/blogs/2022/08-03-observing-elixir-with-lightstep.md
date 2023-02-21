@@ -127,11 +127,11 @@ With distributed tracing, it is recommended to start by tracing the [boundaries 
 
 ### Configuration
 
-Before we start sending data, we need to add a few configurations to our app
+Before we start sending data, we need to add a few configurations to our app:
 
 1. Run the `opentelemetry` application as temporary
 
-Although observability is important, if it fails it shouldn't take your app down with it! To ensure this is the case, we need to make sure `opentelemetry` runs in temporary mode
+Although observability is important, if it fails it shouldn't take your app down with it! To ensure this is the case, we need to make sure `opentelemetry` runs in temporary mode.
 
 We also need to put `opentelemetry_exporter` before other `opentelemetry` in the release's applications list, to make sure the applications it depends on are started properly.
 
@@ -156,7 +156,7 @@ end
 
 2. Set your runtime specific attributes for your production environment
 
-My application currently runs in [fly.io](https://fly.io). In the startup script for my Elixir release, I add the following annotations so that every span has information about the server and environment it is executed in. Note that there are more options that you can set, see the [OpenTelemetry semantic conventions for the cloud](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/cloud.md)
+My application currently runs in [Fly.io](https://fly.io). In the startup script for my Elixir release, I add the following annotations so that every span has information about the server and environment it is executed in. Note that there are more options that you can set, see the [OpenTelemetry semantic conventions for the cloud](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/cloud.md)
 
 ```bash
 # rel/overlays/bin/server

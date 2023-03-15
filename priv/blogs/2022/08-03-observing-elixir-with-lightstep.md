@@ -194,9 +194,7 @@ if System.get_env("DEBUG_OTEL") == "true" do
       exporter: {:otel_exporter_stdout, []}
     }
 else
-  config :opentelemetry,
-    :tracer,
-    :otel_tracer_noop
+  config :opentelemetry, traces_exporter: :none
 end
 ```
 

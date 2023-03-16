@@ -10,6 +10,13 @@ defmodule Website.Blog do
 
   @content [
              %{
+               type: :talk,
+               title: "Accessible Time Series data with TimescaleDB",
+               link: "https://youtu.be/sFnoZm89U64",
+               date: ~D[2022-11-03],
+               event: "Code BEAM America 2022"
+             },
+             %{
                type: :podcast,
                title: "Dave Lucia and Elixir's superpowers",
                link: "https://www.beamrad.io/45",

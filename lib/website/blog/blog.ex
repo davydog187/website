@@ -10,6 +10,13 @@ defmodule Website.Blog do
 
   @content [
              %{
+               type: :podcast,
+               title: "Operational Elixir: Observing the Midsize Madness",
+               link: "https://podcast.thinkingelixir.com/193",
+               date: ~D[2024-03-12],
+               event: "Thinking Elixir"
+             },
+             %{
                type: :talk,
                title: "Accessible Time Series data with TimescaleDB",
                link: "https://youtu.be/sFnoZm89U64",

@@ -11,6 +11,13 @@ defmodule Website.Blog do
   @content [
              %{
                type: :podcast,
+               title: "Dave Lucia on Rustler & Team Building",
+               link: "https://www.youtube.com/live/GuEecQ2jSuk?si=o46x25tQXrZN_PQe",
+               date: ~D[2024-08-02],
+               event: "Elixir Mentor"
+             },
+             %{
+               type: :podcast,
                title: "Operational Elixir: Observing the Midsize Madness",
                link: "https://podcast.thinkingelixir.com/193",
                date: ~D[2024-03-12],

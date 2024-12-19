@@ -11,6 +11,27 @@ defmodule Website.Blog do
   @content [
              %{
                type: :podcast,
+               title: "Testing TVs At Scale With Elixir (with Dave Lucia)",
+               link: "https://youtu.be/_MwXbHADT-A?si=2lRqjwAY9dsODyhW",
+               date: ~D[2024-12-19],
+               event: "Developer Voices"
+             },
+             %{
+               type: :podcast,
+               title: "Writing an Elixir Igniter installer for OpenTelemetry (Part 2)",
+               link: "https://www.youtube.com/live/SOO4RcolYSI?si=QpEaFC7UAJYY3Cm-",
+               date: ~D[2024-11-05],
+               event: "Live Stream"
+             },
+             %{
+               type: :podcast,
+               title: "Writing an Elixir Igniter installer for OpenTelemetry",
+               link: "https://www.youtube.com/live/bHoCMMk2ksc?si=NIblMEOMxxSZu1in",
+               date: ~D[2024-10-29],
+               event: "Live Stream"
+             },
+             %{
+               type: :podcast,
                title: "Dave Lucia on Rustler & Team Building",
                link: "https://www.youtube.com/live/GuEecQ2jSuk?si=o46x25tQXrZN_PQe",
                date: ~D[2024-08-02],

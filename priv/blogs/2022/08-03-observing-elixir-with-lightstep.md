@@ -156,7 +156,7 @@ end
 
 2. Set your runtime specific attributes for your production environment
 
-My application currently runs in [Fly.io](https://fly.io). In the startup script for my Elixir release, I add the following annotations so that every span has information about the server and environment it is executed in. Note that there are more options that you can set, see the [OpenTelemetry semantic conventions for the cloud](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/cloud.md)
+My application currently runs in [Fly.io](https://fly.io). In the startup script for my Elixir release, I add the following annotations so that every span has information about the server and environment it is executed in. Note that there are more options that you can set, see the [OpenTelemetry semantic conventions for the cloud](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/README.md)
 
 ```bash
 # rel/overlays/bin/server

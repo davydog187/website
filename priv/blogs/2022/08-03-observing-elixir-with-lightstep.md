@@ -15,12 +15,6 @@ When I wake up in the morning, its time to figure out what went wrong, fix the b
 
 Observability is simply the ability to observe your running system, with the purpose of understanding its behavior. Forget the [three pillars](https://youtu.be/EJV_CgiqlOE), or anything else you might have read, observability is all about information, tools, and analysis to get to the bottom of your burning questions faster.
 
-> ### I'm hiring! {: .hiring}
-> 
-> If you're interested in observability, the BEAM, and Elixir, I'm hiring engineers at [Bitfo](https://bitfo.com).
->
-> [Apply today!](https://jobs.gusto.com/postings/bitfo-backend-engineer-1bd420ee-e23b-4ad4-8cb2-8030a84c4089)
-
 If you've ever had questions like:
 
 * Why does the latency of the `/api/foo/thing` route suddenly triple the normal average?

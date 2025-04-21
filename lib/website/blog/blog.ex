@@ -11,6 +11,14 @@ defmodule Website.Blog do
   @content [
              %{
                type: :podcast,
+               title: "Smart TV Testing Made Simple",
+               link:
+                 "https://www.platformengineeringpod.com/episode/smart-tv-testing-made-simple",
+               date: ~D[2025-03-19],
+               event: "Platform Engineering Podcast"
+             },
+             %{
+               type: :podcast,
                title: "Testing TVs At Scale With Elixir (with Dave Lucia)",
                link: "https://youtu.be/_MwXbHADT-A?si=2lRqjwAY9dsODyhW",
                date: ~D[2024-12-19],

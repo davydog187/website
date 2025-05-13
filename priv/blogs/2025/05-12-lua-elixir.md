@@ -9,7 +9,7 @@
 
 The first stable release of the Elixir library, [Lua v0.1.0](https://hexdocs.pm/lua/Lua.html), has been released to [hex.pm](https://hex.pm/packages/lua)!
 
-Lua is a library that allows you to execute arbitrary, sandboxed [Lua](https://www.lua.org/) programs directly on the BEAM VM. This is **not** embedding the C Lua runtime and compiler, but rather a complete implementation of Lua 1.3. This feat is made possible by the underlying [Luerl library](https://github.com/rvirding/luerl), which implements a Lua parser, compiler, and runtime, all in Erlang.
+Lua is a library that allows you to execute arbitrary, sandboxed [Lua](https://www.lua.org/) programs directly on the BEAM VM. This is **not** embedding the C Lua runtime and compiler, but rather a complete implementation of Lua 5.3. This feat is made possible by the underlying [Luerl library](https://github.com/rvirding/luerl), which implements a Lua parser, compiler, and runtime, all in Erlang.
 
 The Lua Elixir library extends the capabilities of the Luerl library, improving error messages and providing robust documentation. 
 

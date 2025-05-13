@@ -49,7 +49,7 @@
     @apply mx-auto;
   }
 
-  blockquote {
+  blockquote:not(.admonition) {
     @apply my-4 border-l-2 border-l-blue-400 pl-8 italic;
   }
 }

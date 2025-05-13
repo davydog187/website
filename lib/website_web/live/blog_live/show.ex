@@ -22,7 +22,7 @@ defmodule WebsiteWeb.BlogLive.Show do
   end
 
   def render(assigns) do
-    ~F"""
+    ~H"""
     <div class="relative mx-4 md:mx-0">
       <div class="absolute left-0 top-0 text-sm italic pb-2">
         Published <time datetime={@post.date}>{Calendar.strftime(@post.date, "%b %d, %Y")}</time>
@@ -31,7 +31,9 @@ defmodule WebsiteWeb.BlogLive.Show do
       <div>
         {Phoenix.HTML.raw(@post.body)}
 
-        <div class="my-6 text-sm italics text-gray-600">See a mistake/bug? Edit this article on <Link to={Post.github_url(@post)}>Github</Link></div>
+        <div class="my-6 text-sm italics text-gray-600">
+          See a mistake/bug? Edit this article on <.link href={Post.github_url(@post)}>Github</.link>
+        </div>
       </div>
     </div>
     """

@@ -5,8 +5,6 @@ defmodule WebsiteWeb.BlogLive.Index do
 
   alias WebsiteWeb.Components.SVG
 
-  alias Surface.Components.Link
-
   def mount(_, _, socket) do
     {:ok, assign(socket, filter: &Function.identity/1, filter_selected: :all)}
   end

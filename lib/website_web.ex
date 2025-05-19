@@ -17,87 +17,97 @@ defmodule WebsiteWeb do
   and import those modules here.
   """
 
-  def controller do
-    quote do
-      use Phoenix.Controller, namespace: WebsiteWeb
-
-      import Plug.Conn
-      alias WebsiteWeb.Router.Helpers, as: Routes
-    end
-  end
-
-  def view do
-    quote do
-      use Phoenix.View,
-        root: "lib/website_web/templates",
-        namespace: WebsiteWeb
-
-      # Import convenience functions from controllers
-      import Phoenix.Controller,
-        only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
-
-      # Include shared imports and aliases for views
-      unquote(view_helpers())
-      import Surface
-
-      use Surface.View, root: "lib/website_web/templates"
-    end
-  end
-
-  def live_view do
-    quote do
-      use Surface.LiveView,
-        layout: {WebsiteWeb.LayoutView, "live.html"}
-
-      unquote(view_helpers())
-    end
-  end
-
-  def live_component do
-    quote do
-      use Surface.LiveComponent
-
-      unquote(view_helpers())
-    end
-  end
-
-  def component do
-    quote do
-      use Surface.Component
-
-      unquote(view_helpers())
-    end
-  end
+  def static_paths,
+    do:
+      ~w(assets fonts images icons favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png robots.txt manifest.json)
 
   def router do
     quote do
-      use Phoenix.Router
+      use Phoenix.Router, helpers: false
 
-      import Plug.Conn
+      import LiveSvelte
+
+      # Import common connection and controller functions to use in pipelines
       import Phoenix.Controller
       import Phoenix.LiveView.Router
+      import Plug.Conn
     end
   end
 
   def channel do
     quote do
       use Phoenix.Channel
+
+      unquote(verified_routes())
     end
   end
 
-  defp view_helpers do
+  def controller do
     quote do
-      # Use all HTML functionality (forms, tags, etc)
-      use Phoenix.HTML
+      use Phoenix.Controller,
+        formats: [:html, :json],
+        layouts: [html: WebsiteWeb.Layouts]
 
-      # Import LiveView and .heex helpers (live_render, live_patch, <.form>, etc)
-      import Phoenix.LiveView.Helpers
+      use Gettext, backend: WebsiteWeb.Gettext
 
-      # Import basic rendering functionality (render, render_layout, etc)
-      import Phoenix.View
+      import Plug.Conn
 
-      import WebsiteWeb.ErrorHelpers
-      alias WebsiteWeb.Router.Helpers, as: Routes
+      unquote(verified_routes())
+    end
+  end
+
+  def live_view(opts \\ []) do
+    opts = Keyword.put_new(opts, :layout, {WebsiteWeb.Layouts, :app})
+
+    quote do
+      use Phoenix.LiveView, unquote(opts)
+
+      on_mount Sentry.LiveViewHook
+
+      unquote(html_helpers())
+    end
+  end
+
+  def live_component do
+    quote do
+      use Phoenix.LiveComponent
+
+      unquote(html_helpers())
+    end
+  end
+
+  defp html do
+    quote do
+      use Phoenix.Component
+
+      # Import convenience functions from controllers
+      import Phoenix.Controller,
+        only: [get_csrf_token: 0, view_module: 1, view_template: 1]
+
+      # Include general helpers for rendering HTML
+      unquote(html_helpers())
+    end
+  end
+
+  defp html_helpers do
+    quote do
+      # HTML escaping functionality
+      import Phoenix.HTML
+
+      # Shortcut for generating JS commands
+      alias Phoenix.LiveView.JS
+
+      # Routes generation with the ~p sigil
+      unquote(verified_routes())
+    end
+  end
+
+  def verified_routes do
+    quote do
+      use Phoenix.VerifiedRoutes,
+        endpoint: WebsiteWeb.Endpoint,
+        router: WebsiteWeb.Router,
+        statics: WebsiteWeb.static_paths()
     end
   end
 

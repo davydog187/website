@@ -79,6 +79,6 @@ Lua has been a great foundation for building our automation platform at TV Labs;
 
 To that end, Robert and I have discussed merging the Elixir Lua library into Luerl. We hope to do this and release a 2.0.0 version of Luerl, continuing to improve documentation, remove deprecated interfaces, and dramatically improve error messages and stack traces.
 
-If you're interested in getting involved, join the [Slack](https://erlef.org/slack-invite/luerl) or [Discord](https://discord.gg/TW78MycH), or [open an issue on Github](https://github.com/rvirding/luerl/issues/new).
+If you're interested in getting involved, join the [Discord](https://discord.gg/uxNjyysc), or [open an issue on Github](https://github.com/rvirding/luerl/issues/new).
 
 Thanks!

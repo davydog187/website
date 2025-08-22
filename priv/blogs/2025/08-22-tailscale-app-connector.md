@@ -7,18 +7,18 @@
 }
 ---
 
-Ever need to write a website that you want to expose internally, and don't want to expose to the internet at all?
+Ever need to write a website that you want to expose internally without exposing it to the internet at all?
 
-How about a service running in Fly.io that you want to access from AWS, and you also want to avoid exposing it to the internet?
+How about a service running in Fly.io that you want to access from AWS while avoiding internet exposure?
 
-If you run a small team like I do, you might not have the resources to set up secure bridges between VPCs in different clouds, the technical capabilities to do so, or the Anthropic budget to vibe one.
+If you run a small team like I do, you might not have the resources to set up secure bridges between VPCs in different clouds, the technical capabilities to do so, or the budget to build one.
 
 
-Lucky for you, I am going to show you how [Tailscale App Connector](https://tailscale.com/kb/1281/app-connectors) makes this possible, and how you can do this for yourself.
+Lucky for you, I'm going to show you how [Tailscale App Connector](https://tailscale.com/kb/1281/app-connectors) makes this possible and how you can do this yourself.
 
 ### What is Tailscale?
 
-For the uninitiated, [Tailscale](https://tailscale.com/) is a VPN solution built on top of [Wireguard](https://www.wireguard.com/) that makes connecting devices on different networks a breeze. Simply spin up the [Tailscale agent](https://tailscale.com/download) on a machine and your desktop, configure your policy to allow traffic between them, and BOOM, you can now access that device from anywhere. Don't believe me? Give their [quickstart guide a go](https://tailscale.com/kb/1017/install).
+For the uninitiated, [Tailscale](https://tailscale.com/) is a VPN solution built on top of [Wireguard](https://www.wireguard.com/) that makes connecting devices on different networks a breeze. Simply spin up the [Tailscale agent](https://tailscale.com/download) on a machine and your desktop, configure your policy to allow traffic between them, and boom—you can now access that device from anywhere. Don't believe me? Give their [quickstart guide](https://tailscale.com/kb/1017/install) a try.
 
 I've used Tailscale for a million things, but to name a few:
 
@@ -30,33 +30,33 @@ I've used Tailscale for a million things, but to name a few:
 These are just a few off the top of my head, but Tailscale opens so many interesting possibilities that I never would have considered prior.
 
 
-### What is a Tailscale App Connector
+### What is a Tailscale App Connector?
 
-An App Connector is really three conceptual things:
+An App Connector is conceptually three things:
 
 1. It acts as a DNS server
 2. It acts as a router for IP packets
 3. It acts as a conduit for Access Control
 
-What App Connectors allow you to do is to advertise a network's internal DNS to machines and users on your [Tailnet](https://tailscale.com/kb/1136/tailnet) as if they were on that network. 
+App Connectors allow you to advertise a network's internal DNS to machines and users on your [Tailnet](https://tailscale.com/kb/1136/tailnet) as if they were on that network.
 
-For example, here's a few interesting things you can do:
+For example, here are a few interesting things you can do:
 
-1. Have an internal only HR website
-2. Expose a logging service to edges nodes running on a VPS
-3. Bridge two clouds so their services can talk to eachother over a secure connection
+1. Have an internal-only HR website
+2. Expose a logging service to edge nodes running on a VPS
+3. Bridge two clouds so their services can talk to each other over a secure connection
 
-There are many ways to achieve the above, but with Tailscale, you make this possible over a secure Wireguard connection, with ACL rules that allow you to limit access at a machine and user level
+There are many ways to achieve the above, but with Tailscale, you can make this possible over a secure Wireguard connection with ACL rules that allow you to limit access at both machine and user levels.
 
 
 ### Let's build an App Connector
 
-In this example, let's deploy a service running on Fly.io and access it through the App Connector. We will not be exposing this service to the internet, so only users on your Tailnet who have permissions to access this service will be able to.
+In this example, let's deploy a service running on Fly.io and access it through the App Connector. We will not expose this service to the internet, so only users on your Tailnet who have permissions to access this service will be able to do so.
 
-First, you'll need to deploy a container to Fly that runs the Tailscale agent and is configured to be an App Connector. It must meet the following criteria
+First, you'll need to deploy a container to Fly that runs the Tailscale agent and is configured to be an App Connector. It must meet the following criteria:
 
 1. A public IP address
-2. Have IP forwarding enabled
+2. IP forwarding enabled
 
 
 ```dockerfile
@@ -77,7 +77,7 @@ RUN chmod +x /app/start-connector.sh
 CMD ["/app/start-connector.sh"]
 ```
 
-You'll then start the app connector like so
+You'll then start the app connector like this:
 
 ```bash
 #!/bin/sh
@@ -116,7 +116,7 @@ NETWORK_PREFIX=fdaa:1:ffff::/48
 sleep infinity
 ```
 
-Finally, you'll spin up your app with a fly.toml that looks like this.
+Finally, you'll spin up your app with a fly.toml that looks like this:
 
 
 ```toml
@@ -129,7 +129,7 @@ app = 'my-fly-connector'
 primary_region = 'ewr'
 
 [env]
-  TS_HOSTNAME = 'my-fly-connector
+  TS_HOSTNAME = 'my-fly-connector'
 
 [[vm]]
   cpu_kind = 'shared'
@@ -137,10 +137,10 @@ primary_region = 'ewr'
   memory_mb = 256
 ```
 
-Now `fly deploy` your app connector, and let's update your Tailscale hujson file.
+Now `fly deploy` your app connector, and let's update your Tailscale policy file.
 
 
-First, create a new tag for your app connector in `tagOwners`
+First, create a new tag for your app connector in `tagOwners`:
 
 ```json
 
@@ -150,7 +150,7 @@ First, create a new tag for your app connector in `tagOwners`
   },
 ```
 
-Then we need to auto approve routes avertised by the App Connector
+Then we need to auto-approve routes advertised by the App Connector:
 
 ```json
   "autoApprovers": {
@@ -161,7 +161,7 @@ Then we need to auto approve routes avertised by the App Connector
   },
 ```
 
-Then we're going to grant access to users and machines we want to be able to access services exposed by the app connector
+Then we're going to grant access to users and machines we want to be able to access services exposed by the app connector:
 
 ```json
   "grants": [
@@ -175,7 +175,7 @@ Then we're going to grant access to users and machines we want to be able to acc
   ],
 ```
 
-And finally, we need to expose the service DNS that we want the app connector to advertise
+Finally, we need to expose the service DNS that we want the app connector to advertise:
 
 
 ```
@@ -203,12 +203,12 @@ And finally, we need to expose the service DNS that we want the app connector to
 
 ### Summary
 
-If you've followed these instructions carefully, you can type in `http://my-service.internal` into your browser, and access a private service running in Fly.io through a Tailscale app connector!
+If you've followed these instructions carefully, you can type `http://my-service.internal` into your browser and access a private service running in Fly.io through a Tailscale app connector!
 
-For any machine that is running Tailscale that you wish to access services exposed through the App Connector, it is important that you do `tailscale set --accept-routes` for an already running Tailscale agent, or `tailscale up --accept-routes`
+For any machine running Tailscale that you wish to access services exposed through the App Connector, it's important that you run `tailscale set --accept-routes` for an already running Tailscale agent, or `tailscale up --accept-routes` when starting a new one.
 
-There was a lot of configuration involved with process, and while it is tricky, it is certainly possible to use App Connectors to solve many problems!
+There was a lot of configuration involved in this process, and while it's tricky, it's certainly possible to use App Connectors to solve many problems!
 
-With that being said, I've spoken to the fine folks over at Tailscale, and they previewed some upcoming changes to their product that will make this much easier, and will provide additional features for setting up https certificates and other goodies.
+That said, I've spoken to the fine folks over at Tailscale, and they previewed some upcoming changes to their product that will make this much easier and provide additional features for setting up HTTPS certificates and other goodies.
 
 If you have any questions or get stuck, feel free to reach out. Thanks!

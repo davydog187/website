@@ -151,7 +151,7 @@ Then we need to auto-approve routes advertised by the App Connector:
   "autoApprovers": {
     "routes": {
       // Allow traffic to fly.io 6PN network through the my-fly-connector
-      "fdaa:1:fff::/48": ["tag:my-fly-connector"]
+      "fdaa:1:ffff::/48": ["tag:my-fly-connector"]
     }
   },
 ```

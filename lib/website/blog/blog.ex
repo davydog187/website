@@ -39,6 +39,13 @@ defmodule Website.Blog do
                event: "Live Stream"
              },
              %{
+               type: :talk,
+               title: "Lua on the BEAM w/ Robert Virding",
+               link: "https://youtu.be/4YBBoXXH_98?si=FMRerYbpESrSoVUn",
+               date: ~D[2024-11-05],
+               event: "Code BEAM EU 2024"
+             },
+             %{
                type: :podcast,
                title: "Dave Lucia on Rustler & Team Building",
                link: "https://www.youtube.com/live/GuEecQ2jSuk?si=o46x25tQXrZN_PQe",
